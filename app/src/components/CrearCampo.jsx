@@ -10,6 +10,7 @@ const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) 
         onChange={(e) => onNombreChange(e.target.value)}
       /> */}
 
+
       <label>
         Es unico:
         <input 
@@ -17,6 +18,8 @@ const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) 
         onChange={(e) => onUnicoChange(e.target.checked)}
         />
       </label>
+
+
       <button type="button" onClick={onEliminar}>Eliminar Propiedad</button>
     </div>
   );
