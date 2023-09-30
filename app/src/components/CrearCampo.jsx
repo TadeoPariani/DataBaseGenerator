@@ -3,12 +3,12 @@ import React from 'react';
 const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) => {
   return (
     <div>
-      {/* <input
+      <input
         type="text"
-        placeholder="Nombre de la propiedad"
+        placeholder="Nombre del campo"
         value={nombreCampo}
         onChange={(e) => onNombreChange(e.target.value)}
-      /> */}
+      />
 
 
       <label>
@@ -20,7 +20,7 @@ const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) 
       </label>
 
 
-      <button type="button" onClick={onEliminar}>Eliminar Propiedad</button>
+      <button type="button" onClick={onEliminar}>Eliminar Campo</button>
     </div>
   );
 };
