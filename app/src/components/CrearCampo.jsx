@@ -1,8 +1,16 @@
 import React from 'react';
 
-const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) => {
+const CrearCampo = ({
+  nombreCampo, 
+  onNombreChange, 
+  onUnicoChange,
+  onTipoChange, 
+  onEliminar 
+  }) => {
+
   return (
     <div>
+      <label>Nombre del Campo: </label>
       <input
         type="text"
         placeholder="Nombre del campo"
@@ -10,16 +18,28 @@ const CrearCampo = ({ nombreCampo, onNombreChange, onUnicoChange, onEliminar }) 
         onChange={(e) => onNombreChange(e.target.value)}
       />
 
+      <label>
+        Tipo 
+        <select 
+          onChange={(e) => onTipoChange(e.target.value)}>
+          <option value="STRING">STRING</option>
+          <option value="CHAR">CHAR</option>
+          <option value="INTEGER">INTEGER</option>
+          <option value="REAL">REAL</option>
+          <option value="DECIMAL">DECIMAL</option>
+          <option value="BOOLEAN">BOOLEAN</option>
+          <option value="DATE">DATE</option>
+          <option value="ENUM">ENUM</option>
+        </select>
+      </label>
 
       <label>
-        Es unico:
+        Es unico: 
         <input 
         type="checkbox"
         onChange={(e) => onUnicoChange(e.target.checked)}
         />
       </label>
-
-
       <button type="button" onClick={onEliminar}>Eliminar Campo</button>
     </div>
   );

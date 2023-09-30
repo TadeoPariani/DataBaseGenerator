@@ -2,24 +2,21 @@ import { Sequelize, DataTypes, Model } from 'sequelize'
 
 export function definirModelo(nombre, campos) {
 
-    console.log("ESTO ES DEFINIR MODELO ", nombre, campos[2]);
+    console.log("ESTO ES DEFINIR MODELO ", nombre, campos);
     const modelDefinition = {};
 
     campos.forEach(campo => {
-        const { nombre: nombreCampo, esUnico } = campo;
-        // Define las propiedades específicas de cada campo
+        const { nombre: nombreCampo, tipo, esUnico } = campo;
         modelDefinition[nombreCampo] = {
-            type: DataTypes.STRING, // Puedes ajustar el tipo según lo que necesites
+            type: DataTypes[tipo], 
             unique: esUnico,
-            allowNull: true, // Ajusta según sea necesario
-            // Otras propiedades como defaultValue, tamaño de string, etc.
+            allowNull: true, 
         };
-        
     });
 
     console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
 
-    //   const Modelo = sequelize.define(nombre, modelDefinition);
+    const Modelo = sequelize.define(nombre, modelDefinition);
 
     //   return Modelo;
 }

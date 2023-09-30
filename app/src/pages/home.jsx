@@ -8,7 +8,7 @@ export default function CrearModelo() {
   const [Campos, setCampos] = useState([{ nombre: ''}]);
 
   const agregarCampo = () => {
-    setCampos([...Campos, { nombre: '', esUnico : false }]);
+    setCampos([...Campos, { nombre: '', tipo: '', esUnico : false }]);
   };
 
   const eliminarPropiedad = (index) => {
@@ -26,6 +26,12 @@ export default function CrearModelo() {
   const handleUnicoChange = (valor, index) => {
     const nuevosCampos = [...Campos];
     nuevosCampos[index].esUnico = valor;
+    setCampos(nuevosCampos);
+  };
+
+  const handleTipoChange = (valor, index) => {
+    const nuevosCampos = [...Campos];
+    nuevosCampos[index].tipo = valor;
     setCampos(nuevosCampos);
   };
 
@@ -73,6 +79,7 @@ export default function CrearModelo() {
             key={index}
             nombreCampo={campo.nombre}
             onNombreChange={(valor) => handleNombreChange(valor, index)}
+            onTipoChange={(valor) => handleTipoChange(valor, index)}
             onUnicoChange={(valor) => handleUnicoChange(valor, index)}
             onEliminar={() => eliminarPropiedad(index)}
           />
