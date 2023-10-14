@@ -1,22 +1,51 @@
 import { Sequelize, DataTypes, Model } from 'sequelize'
 
-export function definirModelo(nombre, campos) {
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite'
+});
 
-    console.log("ESTO ES DEFINIR MODELO ", nombre, campos);
+export function definirModelo(listaModelos) {
+    console.log("ESTO ES DEFINIR MODELO ", listaModelos);
+    const listaModelosDefinidos = []
+
+    // for (let i = 0; i < listaModelos.length; i++) {
+    //     const tabla = listaModelos[i];
+    //     tabla.camposTabla = tabla.camposTabla.map(obj => JSON.stringify(obj));
+    // }
+      
+    console.log(listaModelos);
+
     const modelDefinition = {};
 
-    campos.forEach(campo => {
-        const { nombre: nombreCampo, tipo, esUnico } = campo;
-        modelDefinition[nombreCampo] = {
-            type: DataTypes[tipo], 
-            unique: esUnico,
-            allowNull: true, 
-        };
-    });
 
-    console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
+    listaModelos.forEach(model => {
+        console.log(model.nombreTabla);
+        model.camposTabla.forEach(campo => {
+            console.log("ESTO ES EL CAMPO: ", campo);
+            modelDefinition[campo.nombre] = {
+                type: DataTypes[campo.tipo],
+                unique: campo.esUnico,
+                allowNull: campo.NotNull
+            }
+        })
+        console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
+        const Modelo = sequelize.define(model.nombreTabla, modelDefinition);
+        listaModelosDefinidos.push(Modelo);
+        // Modelo.sync({ alter: true });
+    })
 
-    const Modelo = sequelize.define(nombre, modelDefinition);
+    // campos.forEach(campo => {
+    //     const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;
+    //     modelDefinition[nombreCampo] = {
+    //         type: DataTypes[tipo], 
+    //         unique: esUnico,
+    //         allowNull: true, 
+    //     };
+    // });
 
-    //   return Modelo;
+    // const Modelo = sequelize.define(nombre, modelDefinition);
+
+    // Modelo.hasMany(Personas)
+    // Modelo.sync({ alter: true });
 }

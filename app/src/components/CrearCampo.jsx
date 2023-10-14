@@ -5,6 +5,7 @@ const CrearCampo = ({
   onNombreChange, 
   onUnicoChange,
   onTipoChange, 
+  onNotNullChange,
   onEliminar 
   }) => {
 
@@ -22,6 +23,7 @@ const CrearCampo = ({
         Tipo 
         <select 
           onChange={(e) => onTipoChange(e.target.value)}>
+          <option value=""></option>
           <option value="STRING">STRING</option>
           <option value="CHAR">CHAR</option>
           <option value="INTEGER">INTEGER</option>
@@ -34,12 +36,21 @@ const CrearCampo = ({
       </label>
 
       <label>
-        Es unico: 
+        Es Unico: 
         <input 
         type="checkbox"
         onChange={(e) => onUnicoChange(e.target.checked)}
         />
       </label>
+
+      <label>
+        Not Null: 
+        <input 
+        type="checkbox"
+        onChange={(e) => onNotNullChange(e.target.checked)}
+        />
+      </label>
+
       <button type="button" onClick={onEliminar}>Eliminar Campo</button>
     </div>
   );
