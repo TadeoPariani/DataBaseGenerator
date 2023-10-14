@@ -4,45 +4,52 @@ import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
 
 export default function CrearModelo() {
-  const [nombre, setNombre] = useState('');
-  const [Campos, setCampos] = useState([{ nombre: ''}]);
+  const [nombreModelo, setNombre] = useState();
+  const [camposModelo, setCampos] = useState([{ Campos: '', }]);
 
   const agregarCampo = () => {
-    setCampos([...Campos, { nombre: '', tipo: '', esUnico : false }]);
+    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: true}]);
   };
 
   const eliminarPropiedad = (index) => {
-    const nuevasPropiedades = [...Campos];
+    const nuevasPropiedades = [...camposModelo];
     nuevasPropiedades.splice(index, 1);
     setCampos(nuevasPropiedades);
   };
 
   const handleNombreChange = (valor, index) => {
-    const nuevosCampos = [...Campos];
+    const nuevosCampos = [...camposModelo];
     nuevosCampos[index].nombre = valor;
     setCampos(nuevosCampos);
   };
 
   const handleUnicoChange = (valor, index) => {
-    const nuevosCampos = [...Campos];
+    const nuevosCampos = [...camposModelo];
     nuevosCampos[index].esUnico = valor;
     setCampos(nuevosCampos);
   };
 
   const handleTipoChange = (valor, index) => {
-    const nuevosCampos = [...Campos];
+    const nuevosCampos = [...camposModelo];
     nuevosCampos[index].tipo = valor;
     setCampos(nuevosCampos);
   };
 
+  const handleNotNullChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].NotNull = valor;
+    setCampos(nuevosCampos);
+  };
+
+  //ACA SE PASAN LOS DATOS A LA API
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const response = await fetch('/api/crearModelo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nombre, campos: Campos }),
+      body: JSON.stringify({ nombre: nombreModelo, campos: camposModelo }),
     });
 
     if (response.ok) {
@@ -50,7 +57,8 @@ export default function CrearModelo() {
     } else {
       alert('Error al crear el modelo');
     }
-    // setCampos([{ nombre: '', esUnico: '' },]);
+    // setCampos([{ esUnico: false }]);
+    // setNombre([{ nombre: ''}])
   };
 
   return (
@@ -68,19 +76,20 @@ export default function CrearModelo() {
             Nombre del Modelo:
             <input
               type="text"
-              value={nombre}
+              value={nombreModelo}
               onChange={(e) => setNombre(e.target.value)}
             />
           </label>
         </div>
 
-        {Campos.map((campo, index) => (
+        {camposModelo.map((campo, index) => (
           <CrearCampo
             key={index}
             nombreCampo={campo.nombre}
             onNombreChange={(valor) => handleNombreChange(valor, index)}
             onTipoChange={(valor) => handleTipoChange(valor, index)}
             onUnicoChange={(valor) => handleUnicoChange(valor, index)}
+            onNotNullChange={(valor) => handleNotNullChange(valor, index)}
             onEliminar={() => eliminarPropiedad(index)}
           />
         ))}
