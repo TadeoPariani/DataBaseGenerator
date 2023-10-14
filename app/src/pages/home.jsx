@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link';
 // import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
@@ -17,7 +18,7 @@ export default function CrearModelo() {
   }
 
   const eliminarPropiedad = (index) => {
-    const nuevasPropiedades = [...camposModelo];
+    const nuevasPropiedades = [...camposModelo];a
     nuevasPropiedades.splice(index, 1);
     setCampos(nuevasPropiedades);
   };
@@ -108,6 +109,7 @@ export default function CrearModelo() {
         <button type="submit" onClick={handleSubmit}>Submit</button>
 
       </form>
+
     </main>
 
     <footer>

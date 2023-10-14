@@ -7,6 +7,7 @@ const sequelize = new Sequelize({
 
 export function definirModelo(listaModelos) {
     console.log("ESTO ES DEFINIR MODELO ", listaModelos);
+    const listaModelosDefinidos = []
 
     // for (let i = 0; i < listaModelos.length; i++) {
     //     const tabla = listaModelos[i];
@@ -16,6 +17,7 @@ export function definirModelo(listaModelos) {
     console.log(listaModelos);
 
     const modelDefinition = {};
+
 
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
@@ -27,10 +29,10 @@ export function definirModelo(listaModelos) {
                 allowNull: campo.NotNull
             }
         })
-        
         console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition);
-        Modelo.sync({ alter: true });
+        listaModelosDefinidos.push(Modelo);
+        // Modelo.sync({ alter: true });
     })
 
     // campos.forEach(campo => {
