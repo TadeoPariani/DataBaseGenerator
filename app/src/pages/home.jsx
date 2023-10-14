@@ -5,11 +5,16 @@ import CrearCampo from '../components/CrearCampo';
 
 export default function CrearModelo() {
   const [nombreModelo, setNombre] = useState();
-  const [camposModelo, setCampos] = useState([{ Campos: '', }]);
+  const [camposModelo, setCampos] = useState([]);
+  const [listaModelos, setListaModelos] = useState([])
 
   const agregarCampo = () => {
     setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: true}]);
   };
+
+  const agregarModelo = () => {
+    setListaModelos([...listaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
+  }
 
   const eliminarPropiedad = (index) => {
     const nuevasPropiedades = [...camposModelo];
@@ -43,13 +48,16 @@ export default function CrearModelo() {
 
   //ACA SE PASAN LOS DATOS A LA API
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
+
+    alert(JSON.stringify(listaModelos))
+
     const response = await fetch('/api/crearModelo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nombre: nombreModelo, campos: camposModelo }),
+      body: JSON.stringify({listaModelos: listaModelos})
     });
 
     if (response.ok) {
@@ -57,7 +65,8 @@ export default function CrearModelo() {
     } else {
       alert('Error al crear el modelo');
     }
-    // setCampos([{ esUnico: false }]);
+
+    //setCampos([{ esUnico: false }]);
     // setNombre([{ nombre: ''}])
   };
 
@@ -93,8 +102,11 @@ export default function CrearModelo() {
             onEliminar={() => eliminarPropiedad(index)}
           />
         ))}
+
         <button type="button" onClick={agregarCampo}>Agregar Campo al Modelo</button>
-        <button type="submit" onClick={handleSubmit}>Crear Modelo</button>
+        <button type="button" onClick={agregarModelo}>Crear Modelo</button>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
+
       </form>
     </main>
 

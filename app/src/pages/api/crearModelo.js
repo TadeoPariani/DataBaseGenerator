@@ -4,9 +4,9 @@ import { definirModelo } from '../api/definirModelo';
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
-    const { nombre, campos } = req.body;
-    console.log(nombre, campos)
-    const Modelo = definirModelo(nombre, campos)
+    const { listaModelos } = req.body;
+    console.log( listaModelos )
+    const Modelo = definirModelo(listaModelos)
 
     res.status(200).json({ message: 'Modelo creado exitosamente'});
   } else {

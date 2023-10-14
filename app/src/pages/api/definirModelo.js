@@ -5,59 +5,45 @@ const sequelize = new Sequelize({
     storage: './database.sqlite'
 });
 
-export function definirModelo(nombre, campos) {
-    console.log("ESTO ES DEFINIR MODELO ", nombre, campos);
+export function definirModelo(listaModelos) {
+    console.log("ESTO ES DEFINIR MODELO ", listaModelos);
+
+    // for (let i = 0; i < listaModelos.length; i++) {
+    //     const tabla = listaModelos[i];
+    //     tabla.camposTabla = tabla.camposTabla.map(obj => JSON.stringify(obj));
+    // }
+      
+    console.log(listaModelos);
+
     const modelDefinition = {};
 
-    // let listaModelos = [
-    //     {nombre: 'Persona', 
-    //         campos:{
-    //             nombre:"Autos",
-    //             tipo:'CHAR',
-    //             esUnico: true,
-    //             NotNull: true,
-    //             relacion: 'hasMany',
-    //             tablaRelacion: 'Telefono'
-    //         }
-    //     },
-    //     {nombre: 'Telefono', 
-    //         campos:{
-    //             nombre:"Autos",
-    //             tipo:'CHAR',
-    //             esUnico: true,
-    //             NotNull: true,
-    //         }
-    //     }
-    // ];
-    // listaModelos.forEach(modelo => {
-    //     const { nombre, campos } = modelo;
-    //     const modelDefinition = {};
-    //     console.log("campos: ", campos.tipo)
-    //     modelDefinition[campos.nombre] = {
-    //         type: campos.tipo, 
-    //         unique: campos.esUnico,
-    //         allowNull: campos.NotNull, 
+    listaModelos.forEach(model => {
+        console.log(model.nombreTabla);
+        model.camposTabla.forEach(campo => {
+            console.log("ESTO ES EL CAMPO: ", campo);
+            modelDefinition[campo.nombre] = {
+                type: DataTypes[campo.tipo],
+                unique: campo.esUnico,
+                allowNull: campo.NotNull
+            }
+        })
+        
+        console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
+        const Modelo = sequelize.define(model.nombreTabla, modelDefinition);
+        Modelo.sync({ alter: true });
+    })
+
+    // campos.forEach(campo => {
+    //     const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;
+    //     modelDefinition[nombreCampo] = {
+    //         type: DataTypes[tipo], 
+    //         unique: esUnico,
+    //         allowNull: true, 
     //     };
-    //     console.log("modelo: ", modelDefinition)
-    //     modelDefinitions[nombre] = modelDefinition;
     // });
-    // console.log("DESPUES DEL MAP", modelDefinitions);
 
-    
+    // const Modelo = sequelize.define(nombre, modelDefinition);
 
-    campos.forEach(campo => {
-        const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;
-        modelDefinition[nombreCampo] = {
-            type: DataTypes[tipo], 
-            unique: esUnico,
-            allowNull: true, 
-        };
-    });
-
-    console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
-
-    const Modelo = sequelize.define(nombre, modelDefinition);
-
-    Modelo.hasMany(Personas)
-    Modelo.sync({ alter: true });
+    // Modelo.hasMany(Personas)
+    // Modelo.sync({ alter: true });
 }
