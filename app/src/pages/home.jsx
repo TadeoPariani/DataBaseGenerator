@@ -1,16 +1,17 @@
 import Head from 'next/head'
-import Link from 'next/link';
-// import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
+import Tabla from '../components/Tabla';
+import { useRouter } from 'next/router'
 
 export default function CrearModelo() {
+  const router = useRouter()
   const [nombreModelo, setNombre] = useState();
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([])
 
   const agregarCampo = () => {
-    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: true}]);
+    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: false}]);
   };
 
   const agregarModelo = () => {
@@ -18,7 +19,7 @@ export default function CrearModelo() {
   }
 
   const eliminarPropiedad = (index) => {
-    const nuevasPropiedades = [...camposModelo];a
+    const nuevasPropiedades = [...camposModelo];
     nuevasPropiedades.splice(index, 1);
     setCampos(nuevasPropiedades);
   };
@@ -47,13 +48,10 @@ export default function CrearModelo() {
     setCampos(nuevosCampos);
   };
 
-  //ACA SE PASAN LOS DATOS A LA API
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     alert(JSON.stringify(listaModelos))
-
-    const response = await fetch('/api/crearModelo', {
+    const response = await fetch('/api/Metodos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,14 +59,16 @@ export default function CrearModelo() {
       body: JSON.stringify({listaModelos: listaModelos})
     });
 
+    router.push({
+      pathname: '/modelos',
+      query: { lista: JSON.stringify(listaModelos) } // Convertimos la lista a una cadena JSON
+    })
+
     if (response.ok) {
       alert("Se creo Correctamente");
     } else {
       alert('Error al crear el modelo');
     }
-
-    //setCampos([{ esUnico: false }]);
-    // setNombre([{ nombre: ''}])
   };
 
   return (
@@ -106,14 +106,11 @@ export default function CrearModelo() {
 
         <button type="button" onClick={agregarCampo}>Agregar Campo al Modelo</button>
         <button type="button" onClick={agregarModelo}>Crear Modelo</button>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-
+        <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
       </form>
-
+      <Tabla listaModelos={listaModelos} ></Tabla>
     </main>
-
     <footer>
-
     </footer>
   </div>
 );

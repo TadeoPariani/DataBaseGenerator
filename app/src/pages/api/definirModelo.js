@@ -13,8 +13,6 @@ export function definirModelo(listaModelos) {
     //     const tabla = listaModelos[i];
     //     tabla.camposTabla = tabla.camposTabla.map(obj => JSON.stringify(obj));
     // }
-      
-    console.log(listaModelos);
 
     const modelDefinition = {};
 
@@ -34,6 +32,8 @@ export function definirModelo(listaModelos) {
         listaModelosDefinidos.push(Modelo);
         // Modelo.sync({ alter: true });
     })
+
+    console.log("estos la lista de modelos: ", listaModelos[1])
 
     // campos.forEach(campo => {
     //     const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;
