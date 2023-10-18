@@ -5,7 +5,8 @@ const sequelize = new Sequelize({
     storage: './database.sqlite'
 });
 
-export function definirModelo(listaModelos) {
+export function definirModelo(lista) {
+    let { listaModelos } = lista;
     console.log("ESTO ES DEFINIR MODELO ", listaModelos);
     const listaModelosDefinidos = []
 

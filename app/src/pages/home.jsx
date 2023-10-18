@@ -3,6 +3,7 @@ import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
 import Tabla from '../components/Tabla';
 import { useRouter } from 'next/router'
+import Link from 'next/link';
 
 export default function CrearModelo() {
   const router = useRouter()
@@ -61,7 +62,7 @@ export default function CrearModelo() {
 
     router.push({
       pathname: '/modelos',
-      query: { lista: JSON.stringify(listaModelos) } // Convertimos la lista a una cadena JSON
+      //query: { lista: JSON.stringify(listaModelos) } // Convertimos la lista a una cadena JSON
     })
 
     if (response.ok) {
@@ -104,11 +105,13 @@ export default function CrearModelo() {
           />
         ))}
 
+        
+
         <button type="button" onClick={agregarCampo}>Agregar Campo al Modelo</button>
         <button type="button" onClick={agregarModelo}>Crear Modelo</button>
         <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
       </form>
-      <Tabla listaModelos={listaModelos} ></Tabla>
+      <Link href={`/modelos?lista=${JSON.stringify(listaModelos)}`}>eeee</Link>
     </main>
     <footer>
     </footer>
