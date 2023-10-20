@@ -5,20 +5,12 @@ const sequelize = new Sequelize({
     storage: './database.sqlite'
 });
 
-export function definirModelo(listaModelos) {
+export function definirModelo(lista) {
+    let { listaModelos } = lista;
     console.log("ESTO ES DEFINIR MODELO ", listaModelos);
     const listaModelosDefinidos = []
-
-    // for (let i = 0; i < listaModelos.length; i++) {
-    //     const tabla = listaModelos[i];
-    //     tabla.camposTabla = tabla.camposTabla.map(obj => JSON.stringify(obj));
-    // }
-      
-    console.log(listaModelos);
-
     const modelDefinition = {};
-
-
+    
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
         model.camposTabla.forEach(campo => {
@@ -34,6 +26,8 @@ export function definirModelo(listaModelos) {
         listaModelosDefinidos.push(Modelo);
         // Modelo.sync({ alter: true });
     })
+
+    console.log("estos la lista de modelos: ", listaModelos[1])
 
     // campos.forEach(campo => {
     //     const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;

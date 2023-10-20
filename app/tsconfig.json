@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/index.jsx", "src/page.ds", "src/pages/api/crearModelo.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/index.jsx", "src/page.ds", "src/pages/api/Metodos.js"],
   "exclude": ["node_modules"]
 }
