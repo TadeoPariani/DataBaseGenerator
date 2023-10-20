@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import CrearCampo from '../components/CrearCampo';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
@@ -11,12 +11,28 @@ export default function CrearModelo() {
   const [listaModelos, setListaModelos] = useState([])
 
   const agregarCampo = () => {
-    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: false, defaultValue: '', lenght: null}]);
+    setCampos([...camposModelo,
+      {
+        nombre: '',
+        tipo: '',
+        esUnico: false,
+        NotNull: false,
+        defaultValue: '',
+        lenght: null,
+        index: false
+      }
+    ]);
   };
 
   const agregarModelo = () => {
-    setListaModelos([...listaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
+    setListaModelos(ListaModelos => [...ListaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
+    console.log(listaModelos)
   }
+
+  useEffect(() => {
+    //setListaModelos(ListaModelos => [...ListaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
+    console.log(listaModelos)
+  })
 
   const eliminarPropiedad = (index) => {
     const nuevasPropiedades = [...camposModelo];
@@ -33,6 +49,12 @@ export default function CrearModelo() {
   const handleUnicoChange = (valor, index) => {
     const nuevosCampos = [...camposModelo];
     nuevosCampos[index].esUnico = valor;
+    setCampos(nuevosCampos);
+  };
+
+  const handleIndexChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].index = valor;
     setCampos(nuevosCampos);
   };
 
@@ -117,9 +139,11 @@ export default function CrearModelo() {
             onNotNullChange={(valor) => handleNotNullChange(valor, index)}
             onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
             onLenghtChange={(valor) => handleLenghtChange(valor, index)}
+            onIndexChange={(valor) => handleIndexChange(valor, index)}
             onEliminar={() => eliminarPropiedad(index)}
           />
         ))}
+
         <button type="button" onClick={agregarCampo}>Agregar Campo al Modelo</button>
         <button type="button" onClick={agregarModelo}>Crear Modelo</button>
         <button type="submit" onClick={handleSubmit}>Crear Tablas</button>

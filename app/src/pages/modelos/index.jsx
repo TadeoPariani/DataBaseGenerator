@@ -24,6 +24,7 @@ function index() {
     return(
         <div>
             <h1>Tablas Creadas</h1>
+            {console.log(listaModelos)}
             <Tabla listaModelos={listaModelos}></Tabla>
       </div>
     )
