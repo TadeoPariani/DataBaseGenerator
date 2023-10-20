@@ -10,7 +10,7 @@ export default function handler(req, res) {
     const Modelo = definirModelo(req.body)
     res.status(200).json({ message: 'Modelo creado exitosamente'});
   } else if (req.method === 'GET') {
-    res.json({ message: "xs", data: lista.listaModelos });
+    res.json({ message: "ok", data: lista.listaModelos });
   } else {
     res.status(405).json({ message: "ERROR EN EL SERVIDOR"});
   }

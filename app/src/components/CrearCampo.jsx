@@ -2,13 +2,17 @@ import React from 'react';
 
 const CrearCampo = ({
   nombreCampo, 
+  defaultValue, 
+  type,
+  lenght,
   onNombreChange, 
   onUnicoChange,
   onTipoChange, 
   onNotNullChange,
-  onEliminar 
+  onDefaultValueChange, 
+  onLenghtChange,
+  onEliminar,
   }) => {
-
   return (
     <div>
       <label>Nombre del Campo: </label>
@@ -51,9 +55,27 @@ const CrearCampo = ({
         />
       </label>
 
+      <label>
+        <input 
+        type="text"
+        placeholder="Default Value"
+        value={defaultValue}
+        onChange={(e) => onDefaultValueChange(e.target.value)}
+        />
+      </label>
+
+      {type !== "DATE" && type !== "BOOLEAN" &&
+        <label>
+          <input 
+            type="text"
+            placeholder="Longitud"
+            value={lenght}
+            onChange={(e) => onLenghtChange(e.target.value)}
+          />
+        </label>
+      }
       <button type="button" onClick={onEliminar}>Eliminar Campo</button>
     </div>
   );
 };
-
 export default CrearCampo;

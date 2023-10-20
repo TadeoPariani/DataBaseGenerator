@@ -11,7 +11,7 @@ export default function CrearModelo() {
   const [listaModelos, setListaModelos] = useState([])
 
   const agregarCampo = () => {
-    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: false}]);
+    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: false, defaultValue: '', lenght: null}]);
   };
 
   const agregarModelo = () => {
@@ -47,6 +47,19 @@ export default function CrearModelo() {
     nuevosCampos[index].NotNull = valor;
     setCampos(nuevosCampos);
   };
+
+  const handleDefaultValueChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].defaultValue = valor;
+    setCampos(nuevosCampos);
+  };
+
+  const handleLenghtChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].lenght = valor;
+    setCampos(nuevosCampos);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,10 +108,15 @@ export default function CrearModelo() {
           <CrearCampo
             key={index}
             nombreCampo={campo.nombre}
+            defaultValue={campo.defaultValue}
+            type={campo.tipo}
+            lenght = {campo.lenght}
             onNombreChange={(valor) => handleNombreChange(valor, index)}
             onTipoChange={(valor) => handleTipoChange(valor, index)}
             onUnicoChange={(valor) => handleUnicoChange(valor, index)}
             onNotNullChange={(valor) => handleNotNullChange(valor, index)}
+            onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
+            onLenghtChange={(valor) => handleLenghtChange(valor, index)}
             onEliminar={() => eliminarPropiedad(index)}
           />
         ))}
@@ -111,5 +129,4 @@ export default function CrearModelo() {
     <footer>
     </footer>
   </div>
-);
-}
+);}

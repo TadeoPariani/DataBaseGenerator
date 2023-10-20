@@ -7,7 +7,7 @@ const sequelize = new Sequelize({
 
 export function definirModelo(lista) {
     let { listaModelos } = lista;
-    console.log("ESTO ES DEFINIR MODELO ", listaModelos);
+    console.log("ANTES DE DEFINIR", listaModelos);
     const listaModelosDefinidos = []
     const modelDefinition = {};
     
@@ -16,30 +16,20 @@ export function definirModelo(lista) {
         model.camposTabla.forEach(campo => {
             console.log("ESTO ES EL CAMPO: ", campo);
             modelDefinition[campo.nombre] = {
-                type: DataTypes[campo.tipo],
+                type: DataTypes[campo.tipo](campo.lenght),
                 unique: campo.esUnico,
-                allowNull: campo.NotNull
+                allowNull: campo.NotNull,
+                defaultValue: campo.defaultValue
             }
         })
+
+        // if (model.campo.tipo === 'STRING' && campo.lenght) {
+        //     modelDefinition.type = DataTypes.STRING(campo.lenght);
+        // }
+
         console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition);
         listaModelosDefinidos.push(Modelo);
-        // Modelo.sync({ alter: true });
+        Modelo.sync({});
     })
-
-    console.log("estos la lista de modelos: ", listaModelos[1])
-
-    // campos.forEach(campo => {
-    //     const { nombre: nombreCampo, tipo, esUnico, NotNull } = campo;
-    //     modelDefinition[nombreCampo] = {
-    //         type: DataTypes[tipo], 
-    //         unique: esUnico,
-    //         allowNull: true, 
-    //     };
-    // });
-
-    // const Modelo = sequelize.define(nombre, modelDefinition);
-
-    // Modelo.hasMany(Personas)
-    // Modelo.sync({ alter: true });
 }
