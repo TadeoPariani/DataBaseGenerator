@@ -9,15 +9,8 @@ export function definirModelo(lista) {
     let { listaModelos } = lista;
     console.log("ESTO ES DEFINIR MODELO ", listaModelos);
     const listaModelosDefinidos = []
-
-    // for (let i = 0; i < listaModelos.length; i++) {
-    //     const tabla = listaModelos[i];
-    //     tabla.camposTabla = tabla.camposTabla.map(obj => JSON.stringify(obj));
-    // }
-
     const modelDefinition = {};
-
-
+    
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
         model.camposTabla.forEach(campo => {

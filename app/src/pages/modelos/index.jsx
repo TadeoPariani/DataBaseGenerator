@@ -1,14 +1,8 @@
-import { useRouter } from 'next/router'
 import Tabla from '../../components/Tabla'
 import React, { useState, useEffect } from 'react';
 
 function index() {
-    const router = useRouter()
     const [listaModelos, setListaModelos] = useState([]);
-
-    // if (!router.query.lista) {
-    //     return null;
-    // }
 
     useEffect(() => {
         async function obtenerLista() {
@@ -27,18 +21,10 @@ function index() {
         obtenerLista();
     });
 
-    // const lista = JSON.parse(router.query.lista)
-
     return(
         <div>
             <h1>Tablas Creadas</h1>
-            
             <Tabla listaModelos={listaModelos}></Tabla>
-            {/* <ul>
-                {listaModelos.map((modelo, index) => (
-                <li key={index}>{modelo.camposTabla}</li>
-                ))}
-            </ul> */}
       </div>
     )
 }

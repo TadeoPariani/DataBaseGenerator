@@ -2,14 +2,9 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import TablaDetalle  from '../../components/TablaDetalle';
 
-
 const ModeloDetalle = () => {
  const router = useRouter();
  const [listaModelos, setListaModelos] = useState([]);
-
-  // if (!router.query.lista) {
-  //   return null;
-  // }
 
   useEffect(() => {
     async function obtenerLista() {
@@ -33,7 +28,6 @@ const ModeloDetalle = () => {
   return (
     <div>
       <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} ></TablaDetalle>
-      {/* <Tabla listaModelos={lista}></Tabla> */}
     </div>
   );
 };

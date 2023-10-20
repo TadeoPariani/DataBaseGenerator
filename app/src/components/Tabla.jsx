@@ -1,9 +1,7 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Tabla = (props) => {
-    const router = useRouter();
     const {listaModelos} = props;
 
     return (
@@ -17,6 +15,5 @@ const Tabla = (props) => {
         </div>
     );
 };
-
 
 export default Tabla;
