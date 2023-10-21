@@ -12,17 +12,8 @@ const Tabla = (props) => {
                 <Link href={`/modelos/${modelo.nombreTabla}?lista=${JSON.stringify(listaModelos2)}`}>Ver Tabla</Link>
                 </div>
             ))}
-
-            {/* {listaModelos2.map((modelo, index) => (
-                <div className="card" key={index}>
-                    <h3>{modelo.nombreTabla}</h3>
-                    <Link href={`/modelos/${modelo.nombreTabla}`}>Ver Tabla</Link>
-                </div>
-            ))} */}
         </div>
     );
 };
-
-
 
 export default Tabla;

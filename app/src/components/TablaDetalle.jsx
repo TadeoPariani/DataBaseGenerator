@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const TablaDetalle = (props) => {
     const {nombreTabla, listaTablas} = props;
     return (
@@ -9,17 +8,9 @@ const TablaDetalle = (props) => {
                 if (modelo.nombreTabla === nombreTabla) {
                     return(
                         <div key={index}>
-                            
-                            {console.log(index, 
-                                modelo.nombreTabla, 
-                                modelo.camposTabla, 
-                                nombreTabla, 
-                                listaTablas
-                            )}
-
                             {modelo.camposTabla.map((campo, index) => 
                                 <div key={index}>
-                                    <h3>NOMBRE DEL CAMPO {campo.nombre}</h3>
+                                    <h3>Nombre del campo: {campo.nombre}</h3>
                                     <h3>Type: {campo.tipo}</h3>
                                     <h3>Unique: {campo.esUnico.toString()}</h3>
                                     <h3>Null: {campo.NotNull.toString()}</h3>
@@ -32,7 +23,7 @@ const TablaDetalle = (props) => {
                         </div>
                     )} else {
                         return null;
-                }
+                    }
             })}
         </div>
     );

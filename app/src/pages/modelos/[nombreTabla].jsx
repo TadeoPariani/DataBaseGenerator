@@ -3,17 +3,12 @@ import React, { useEffect, useState } from 'react';
 import TablaDetalle  from '../../components/TablaDetalle';
 
 const ModeloDetalle = () => {
- const router = useRouter();
- const { nombreTabla, lista } = router.query;
- const listaModelos = JSON.parse(lista)
- 
+  const router = useRouter();
+  const { nombreTabla, lista } = router.query;
+  const listaModelos = JSON.parse(lista)
+
+  //LO DE LA API
   //  const [listaModelos, setListaModelos] = useState([]);
-
-  let listaModelos2 = [];
-  // if (listaModelos) {
-  //   listaModelos2 = JSON.parse(decodeURIComponent(listaModelos));
-  // }
-
   // useEffect(() => {
   //   async function obtenerLista() {
   //     try {
@@ -31,11 +26,8 @@ const ModeloDetalle = () => {
   //   obtenerLista();
   // });
 
-  // const {nombreTabla} = router.query
-
   return (
     <div>
-      <h1>JEJEJEJE</h1>
       <h1>{nombreTabla}</h1>
       <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} ></TablaDetalle>
     </div>

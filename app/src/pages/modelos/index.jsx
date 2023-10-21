@@ -4,52 +4,67 @@ import { useRouter } from 'next/router';
 
 
 function index() {
-    const router = useRouter();
-    const [listaModelos, setListaModelos] = useState([]);
-    const { lista } = router.query;
-    const listaModelos2 = JSON.parse(lista)
+  const router = useRouter();
+  const { lista } = router.query;
+  const listaModelos2 = JSON.parse(lista)
 
-    // useEffect(() => {
-    //     async function obtenerLista() {
-    //       try {
-    //         const response = await fetch('/api/Metodos', {
-    //             method: 'GET',
-    //             headers: { 'Content-Type': 'application/json' },
-    //         });
-    //         const data = await response.json();
-    //         const listaModelos = data.data
-    //         setListaModelos(listaModelos)
-    //       } catch (error) {
-    //         console.error('Error al obtener la lista:', error);
-    //       }
-    //     }
-    //     obtenerLista();
-    // });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    alert(JSON.stringify(listaModelos2))
+    const response = await fetch('/api/Metodos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({listaModelos: listaModelos2})
+    });
 
-    return(
-        <div>
+    // router.push({
+    //   pathname: '/modelos',
+    // })
 
-          {/* {listaModelos2.length === 0 ? (
-            <div>Cargando...</div>
-          ) : ( */}
-            <>
-              <h1>Tablas Creadas</h1>
-              {console.log(listaModelos2)}
-              <Tabla listaModelos2={listaModelos2}></Tabla>
-            </>
-          
-           {/* {listaModelos2.map((modelo, index) => (
-            <div key={index}>
-              <h2>{modelo.nombreTabla}</h2>
-              <ul>
-                {modelo.camposTabla.map((campo, campoIndex) => (
-                  <li key={campoIndex}>{campo.nombre}</li>
-                ))}
-              </ul>
-            </div>
-          ))} */}
-      </div>
-    )
+    if (response.ok) {
+      alert("Se creo Correctamente");
+      await response.json();
+      // router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
+    } else {
+      alert('Error al crear el modelo');
+    }
+  };
+
+  //LO DE LA API
+  // const [listaModelos, setListaModelos] = useState([]);
+  // useEffect(() => {
+  //     async function obtenerLista() {
+  //       try {
+  //         const response = await fetch('/api/Metodos', {
+  //             method: 'GET',
+  //             headers: { 'Content-Type': 'application/json' },
+  //         });
+  //         const data = await response.json();
+  //         const listaModelos = data.data
+  //         setListaModelos(listaModelos)
+  //       } catch (error) {
+  //         console.error('Error al obtener la lista:', error);
+  //       }
+  //     }
+  //     obtenerLista();
+  // });
+
+  return(
+      <div>
+        {listaModelos2.length === 0 ? (
+          <div>NO HAY TABLAS CREADAS</div>
+        ) : (
+          <>
+            <h1>Tablas Creadas</h1>
+            <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
+            {console.log(listaModelos2)}
+            <Tabla listaModelos2={listaModelos2}></Tabla>
+          </>
+        )}
+    </div>
+  )
 }
 
 export default index
