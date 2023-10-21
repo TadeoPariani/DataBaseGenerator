@@ -9,7 +9,7 @@ const Tabla = (props) => {
             {listaModelos2.map((modelo, index) => (
                 <div key={index} className='card'>
                 <h2>{modelo.nombreTabla}</h2>
-                <Link href={`/modelos/${modelo.nombreTabla}?lista=${JSON.stringify(listaModelos2)}`}>Ver Tabla</Link>
+                <Link href={`/modelos/${modelo.nombreTabla}?lista=${encodeURIComponent(JSON.stringify(listaModelos2))}`}>Ver Tabla</Link>
                 </div>
             ))}
         </div>

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 function index() {
   const router = useRouter();
   const { lista } = router.query;
-  const listaModelos2 = JSON.parse(lista)
+  const listaModelos2 = JSON.parse(decodeURIComponent(lista))
 
   const handleSubmit = async (e) => {
     e.preventDefault();

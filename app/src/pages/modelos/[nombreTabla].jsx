@@ -5,7 +5,7 @@ import TablaDetalle  from '../../components/TablaDetalle';
 const ModeloDetalle = () => {
   const router = useRouter();
   const { nombreTabla, lista } = router.query;
-  const listaModelos = JSON.parse(lista)
+  const listaModelos = JSON.parse(decodeURIComponent(lista))
 
   //LO DE LA API
   //  const [listaModelos, setListaModelos] = useState([]);

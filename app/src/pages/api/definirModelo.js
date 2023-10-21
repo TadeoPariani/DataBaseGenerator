@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes, Model } from 'sequelize'
-
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite'
@@ -18,8 +17,6 @@ export function definirModelo(lista) {
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
         model.camposTabla.forEach(campo => {
-            console.log("ESTO ES EL CAMPO: ", campo);
-
             if (campo.index === true) {
                 indexDefinition = {
                     unique: campo.esUnico,
@@ -27,8 +24,6 @@ export function definirModelo(lista) {
                 }
                 indexObject.indexes.push(indexDefinition)
             }
-
-            console.log("LA DEFINICION DEL INDEX:",  indexObject);
 
             modelDefinition[campo.nombre] = {
                 type: DataTypes[campo.tipo](campo.lenght),

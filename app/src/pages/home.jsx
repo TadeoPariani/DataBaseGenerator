@@ -88,7 +88,7 @@ export default function CrearModelo() {
     //   body: JSON.stringify({listaModelos: listaModelos})
     // });
 
-    router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
+    router.push(`/modelos?lista=${encodeURIComponent(JSON.stringify(listaModelos))}`)
 
     // router.push({
     //   pathname: '/modelos',
