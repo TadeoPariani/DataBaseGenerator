@@ -6,7 +6,7 @@ const TablaDetalle = (props) => {
     return (
         <div>
             {listaTablas.map((modelo, index) => {
-                if (modelo.nombreTabla === "A") {
+                if (modelo.nombreTabla === nombreTabla) {
                     return(
                         <div key={index}>
                             

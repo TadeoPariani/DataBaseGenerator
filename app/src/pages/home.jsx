@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
@@ -24,15 +24,16 @@ export default function CrearModelo() {
     ]);
   };
 
-  const agregarModelo = () => {
-    setListaModelos(ListaModelos => [...ListaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
-    console.log(listaModelos)
-  }
+  // const agregarModelo = () => {
+  //   setListaModelos(Lista => [...Lista, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
+  // }
 
-  useEffect(() => {
-    //setListaModelos(ListaModelos => [...ListaModelos, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
-    console.log(listaModelos)
-  })
+  const agregarModelo = () => {
+    const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
+    setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
+  };
+  
+  
 
   const eliminarPropiedad = (index) => {
     const nuevasPropiedades = [...camposModelo];
@@ -86,6 +87,7 @@ export default function CrearModelo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     alert(JSON.stringify(listaModelos))
+    // console.log(JSON.stringify(listaModelos));
     const response = await fetch('/api/Metodos', {
       method: 'POST',
       headers: {
