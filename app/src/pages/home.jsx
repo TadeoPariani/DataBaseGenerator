@@ -24,17 +24,11 @@ export default function CrearModelo() {
     ]);
   };
 
-  // const agregarModelo = () => {
-  //   setListaModelos(Lista => [...Lista, {nombreTabla:nombreModelo, camposTabla:camposModelo}])
-  // }
-
   const agregarModelo = () => {
     const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
     setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
   };
   
-  
-
   const eliminarPropiedad = (index) => {
     const nuevasPropiedades = [...camposModelo];
     nuevasPropiedades.splice(index, 1);
@@ -96,12 +90,16 @@ export default function CrearModelo() {
       body: JSON.stringify({listaModelos: listaModelos})
     });
 
-    router.push({
-      pathname: '/modelos',
-    })
+    // router.push({
+    //   pathname: '/modelos',
+    // })
 
     if (response.ok) {
       alert("Se creo Correctamente");
+      await response.json();
+      router.push({
+        pathname: '/modelos',
+      })
     } else {
       alert('Error al crear el modelo');
     }

@@ -4,29 +4,39 @@ import TablaDetalle  from '../../components/TablaDetalle';
 
 const ModeloDetalle = () => {
  const router = useRouter();
- const [listaModelos, setListaModelos] = useState([]);
+ const { nombreTabla, lista } = router.query;
+ const listaModelos = JSON.parse(lista)
+ 
+  //  const [listaModelos, setListaModelos] = useState([]);
 
-  useEffect(() => {
-    async function obtenerLista() {
-      try {
-        const response = await fetch('/api/Metodos', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        });
-        const data = await response.json();
-        const listaModelos = data.data
-        setListaModelos(listaModelos)
-      } catch (error) {
-        console.error('Error al obtener la lista:', error);
-      }
-    }
-    obtenerLista();
-  });
+  let listaModelos2 = [];
+  // if (listaModelos) {
+  //   listaModelos2 = JSON.parse(decodeURIComponent(listaModelos));
+  // }
 
-  const {nombreTabla} = router.query
+  // useEffect(() => {
+  //   async function obtenerLista() {
+  //     try {
+  //       const response = await fetch('/api/Metodos', {
+  //           method: 'GET',
+  //           headers: { 'Content-Type': 'application/json' },
+  //       });
+  //       const data = await response.json();
+  //       const listaModelos = data.data
+  //       setListaModelos(listaModelos)
+  //     } catch (error) {
+  //       console.error('Error al obtener la lista:', error);
+  //     }
+  //   }
+  //   obtenerLista();
+  // });
+
+  // const {nombreTabla} = router.query
 
   return (
     <div>
+      <h1>JEJEJEJE</h1>
+      <h1>{nombreTabla}</h1>
       <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} ></TablaDetalle>
     </div>
   );
