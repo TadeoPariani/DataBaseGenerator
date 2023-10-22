@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import Link from 'next/link';
-// import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
+
 import { authMiddleware } from '../utils/authMiddleware';
 
 // midlleware de auth para home
@@ -25,13 +24,18 @@ export async function getServerSideProps(context) {
   };
 }
 
+import { useRouter } from 'next/router'
+import Link from 'next/link';
+
+
 export default function CrearModelo() {
+  const router = useRouter()
   const [nombreModelo, setNombre] = useState();
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([])
 
   const agregarCampo = () => {
-    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: true}]);
+    setCampos([...camposModelo, { nombre: '', tipo: '', esUnico: false, NotNull: false, defaultValue: '', lenght: null}]);
   };
 
   const agregarModelo = () => {
@@ -39,7 +43,7 @@ export default function CrearModelo() {
   }
 
   const eliminarPropiedad = (index) => {
-    const nuevasPropiedades = [...camposModelo];a
+    const nuevasPropiedades = [...camposModelo];
     nuevasPropiedades.splice(index, 1);
     setCampos(nuevasPropiedades);
   };
@@ -68,13 +72,23 @@ export default function CrearModelo() {
     setCampos(nuevosCampos);
   };
 
-  //ACA SE PASAN LOS DATOS A LA API
+  const handleDefaultValueChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].defaultValue = valor;
+    setCampos(nuevosCampos);
+  };
+
+  const handleLenghtChange = (valor, index) => {
+    const nuevosCampos = [...camposModelo];
+    nuevosCampos[index].lenght = valor;
+    setCampos(nuevosCampos);
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     alert(JSON.stringify(listaModelos))
-
-    const response = await fetch('/api/crearModelo', {
+    const response = await fetch('/api/Metodos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,14 +96,15 @@ export default function CrearModelo() {
       body: JSON.stringify({listaModelos: listaModelos})
     });
 
+    router.push({
+      pathname: '/modelos',
+    })
+
     if (response.ok) {
       alert("Se creo Correctamente");
     } else {
       alert('Error al crear el modelo');
     }
-
-    //setCampos([{ esUnico: false }]);
-    // setNombre([{ nombre: ''}])
   };
 
   return (
@@ -117,25 +132,25 @@ export default function CrearModelo() {
           <CrearCampo
             key={index}
             nombreCampo={campo.nombre}
+            defaultValue={campo.defaultValue}
+            type={campo.tipo}
+            lenght = {campo.lenght}
             onNombreChange={(valor) => handleNombreChange(valor, index)}
             onTipoChange={(valor) => handleTipoChange(valor, index)}
             onUnicoChange={(valor) => handleUnicoChange(valor, index)}
             onNotNullChange={(valor) => handleNotNullChange(valor, index)}
+            onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
+            onLenghtChange={(valor) => handleLenghtChange(valor, index)}
             onEliminar={() => eliminarPropiedad(index)}
           />
         ))}
-
         <button type="button" onClick={agregarCampo}>Agregar Campo al Modelo</button>
         <button type="button" onClick={agregarModelo}>Crear Modelo</button>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-
+        <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
       </form>
-
+      <Link href={`/modelos?lista=${JSON.stringify(listaModelos)}`}>eeee</Link>
     </main>
-
     <footer>
-
     </footer>
   </div>
-);
-}
+);}
