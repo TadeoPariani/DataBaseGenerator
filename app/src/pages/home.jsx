@@ -3,6 +3,27 @@ import Link from 'next/link';
 // import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
+import { authMiddleware } from '../utils/authMiddleware';
+
+// midlleware de auth para home
+export async function getServerSideProps(context) {
+  const auth = await authMiddleware(context);
+  
+  if (auth.error) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      user: auth.user,
+    },
+  };
+}
 
 export default function CrearModelo() {
   const [nombreModelo, setNombre] = useState();

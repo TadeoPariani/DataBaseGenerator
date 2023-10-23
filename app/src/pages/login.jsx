@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import LoginForm from '../components/LoginForm';
 
 export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedInUsername, setLoggedInUsername] = useState('');
+  const router = useRouter();
 
   const handleLogin = (username) => {
     setIsLoggedIn(true);
     setLoggedInUsername(username);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setLoggedInUsername('');
+    router.push('/login'); 
   };
 
   return (
@@ -21,7 +29,10 @@ export default function Login() {
       {isLoggedIn ? (
         <div>
           <h2>Bienvenido, {loggedInUsername}.</h2>
-          <p>Aquí puedes poner el contenido que se mostrará después del inicio de sesión.</p>
+          <p>
+            <button onClick={() => router.push('/home')}>Home</button>
+            <button onClick={handleLogout}>Cerrar Sesión</button>
+          </p>
         </div>
       ) : (
         <div>
