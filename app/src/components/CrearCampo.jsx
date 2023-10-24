@@ -11,6 +11,7 @@ const CrearCampo = ({
   onNotNullChange,
   onDefaultValueChange, 
   onLenghtChange,
+  onIndexChange,
   onEliminar,
   }) => {
   return (
@@ -52,6 +53,14 @@ const CrearCampo = ({
         <input 
         type="checkbox"
         onChange={(e) => onNotNullChange(e.target.checked)}
+        />
+      </label>
+
+      <label>
+        Es un Indice: 
+        <input 
+        type="checkbox"
+        onChange={(e) => onIndexChange(e.target.checked)}
         />
       </label>
 
