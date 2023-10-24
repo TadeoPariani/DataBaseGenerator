@@ -1,7 +1,5 @@
-// pages/api/login.js
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
-
 const secretKey = 'tu_clave_secreta';
 
 export default async (req, res) => {

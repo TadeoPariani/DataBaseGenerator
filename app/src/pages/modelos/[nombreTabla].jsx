@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import TablaDetalle  from '../../components/modelos/TablaDetalle';
+import TablaDetalle  from '../../components/TablaDetalle';
 
 const ModeloDetalle = () => {
   const router = useRouter();
