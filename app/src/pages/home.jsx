@@ -34,7 +34,7 @@ export default function CrearModelo() {
     setCampos([...camposModelo,
       {
         nombre: '',
-        tipo: '',
+        tipo: 'STRING',
         esUnico: false,
         NotNull: false,
         defaultValue: '',
@@ -106,8 +106,9 @@ export default function CrearModelo() {
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // alert(JSON.stringify(listaModelos))
+    e.preventDefault();
+    alert(JSON.stringify(listaModelos))
+
     // const response = await fetch('/api/definirModelos', {
     //   method: 'POST',
     //   headers: {
@@ -122,13 +123,13 @@ export default function CrearModelo() {
     //   pathname: '/modelos',
     // })
 
-    if (response.ok) {
-      alert("Se creo Correctamente");
-      await response.json();
-      router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
-    } else {
-      alert('Error al crear el modelo');
-    }
+    // if (response.ok) {
+    //   alert("Se creo Correctamente");
+    //   await response.json();
+    //   router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
+    // } else {
+    //   alert('Error al crear el modelo');
+    // }
   };
 
   return (
@@ -174,7 +175,6 @@ export default function CrearModelo() {
         <button type="button" onClick={agregarModelo}>Crear Modelo</button>
         <button type="submit" onClick={handleSubmit}>Ver Tablas</button>
       </form>
-      {/* <Link href={`/modelos?lista=${JSON.stringify(listaModelos)}`}>VER TABLAS</Link> */}
     </main>
     <footer>
     </footer>

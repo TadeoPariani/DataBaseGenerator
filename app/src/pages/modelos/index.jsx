@@ -6,6 +6,7 @@ function index() {
   const router = useRouter();
   const { lista } = router.query;
   const listaModelos2 = JSON.parse(decodeURIComponent(lista))
+  
   // const [listaModelos, setListaModelos] = useState([]);
 
   // useEffect(() => {
@@ -43,7 +44,7 @@ function index() {
     if (response.ok) {
       alert("Se creo Correctamente");
       await response.json();
-      router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
+      router.push(`/modelos?lista=${JSON.stringify(listaModelos2)}`)
     } else {
       alert('Error al crear el modelo');
     }
@@ -58,7 +59,7 @@ function index() {
         ) : (
           <>
             <h1>Tablas Creadas</h1>
-            {/* <button type="submit" onClick={handleSubmit}>Crear Tablas</button> */}
+            <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
             {console.log(listaModelos2)}
             <Tabla listaModelos2={listaModelos2}></Tabla>
           </>
