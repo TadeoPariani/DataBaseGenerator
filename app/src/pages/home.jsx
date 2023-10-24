@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react';
-import CrearCampo from '../components/CrearCampo';
+import CrearCampo from '../components/home/CrearCampo';
 
 import { authMiddleware } from '../utils/authMiddleware';
 

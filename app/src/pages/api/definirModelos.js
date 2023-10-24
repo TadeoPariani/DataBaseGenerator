@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import Sequelize from 'sequelize'; 
-import { definirModelo } from './definirModelo';
+import { definirModelo } from '../../models/definirModelo';
 
 let lista = undefined;
 

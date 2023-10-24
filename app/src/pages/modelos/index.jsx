@@ -1,4 +1,4 @@
-import Tabla from '../../components/Tabla'
+import Tabla from '../../components/modelos/Tabla'
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 

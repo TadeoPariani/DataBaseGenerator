@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/login/LoginForm';
 
 export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
