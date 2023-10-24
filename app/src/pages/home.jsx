@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { useState } from 'react';
 import CrearCampo from '../components/CrearCampo';
-
+import Link from 'next/link';
 import { authMiddleware } from '../utils/authMiddleware';
+import { useRouter } from 'next/router'
 
-// midlleware de auth para home
 export async function getServerSideProps(context) {
   const auth = await authMiddleware(context);
   
@@ -24,13 +24,9 @@ export async function getServerSideProps(context) {
   };
 }
 
-import { useRouter } from 'next/router'
-import Link from 'next/link';
-
-
 export default function CrearModelo() {
   const router = useRouter()
-  const [nombreModelo, setNombre] = useState();
+  const [nombreModelo, setNombre] = useState("");
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([])
 
@@ -49,8 +45,16 @@ export default function CrearModelo() {
   };
 
   const agregarModelo = () => {
-    const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
-    setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
+    camposModelo.map((campo, index) => {
+      if (nombreModelo === ""){
+        alert('Revise los Campos');
+      } else {
+        const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
+        setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
+        setCampos([])
+        setNombre("")
+      }
+    })
   };
   
   const eliminarPropiedad = (index) => {
@@ -102,9 +106,9 @@ export default function CrearModelo() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // alert(JSON.stringify(listaModelos))
-    // const response = await fetch('/api/Metodos', {
+    // const response = await fetch('/api/definirModelos', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
@@ -118,13 +122,13 @@ export default function CrearModelo() {
     //   pathname: '/modelos',
     // })
 
-    // if (response.ok) {
-    //   alert("Se creo Correctamente");
-    //   await response.json();
-    //   router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
-    // } else {
-    //   alert('Error al crear el modelo');
-    // }
+    if (response.ok) {
+      alert("Se creo Correctamente");
+      await response.json();
+      router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
+    } else {
+      alert('Error al crear el modelo');
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link';
 // import styles from '../styles/Home.module.css'
 
 export default function Index() {
@@ -11,6 +12,7 @@ export default function Index() {
     </Head>
 
     <main className>
+      <Link href='/login'>Login</Link>
       <h1>ESTO ES EL INDEX</h1>
     </main>
 

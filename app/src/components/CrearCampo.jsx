@@ -28,7 +28,6 @@ const CrearCampo = ({
         Tipo 
         <select 
           onChange={(e) => onTipoChange(e.target.value)}>
-          <option value=""></option>
           <option value="STRING">STRING</option>
           <option value="CHAR">CHAR</option>
           <option value="INTEGER">INTEGER</option>

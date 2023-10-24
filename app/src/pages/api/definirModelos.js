@@ -1,6 +1,4 @@
-import { Model, DataTypes } from 'sequelize';
-import Sequelize from 'sequelize'; 
-import { definirModelo } from './definirModelo';
+import { definirModelo } from '../../models/definirModelo';
 
 let lista = undefined;
 
@@ -11,8 +9,8 @@ export default function handler(req, res) {
     res.status(200).json({ message: 'Modelo creado exitosamente'});
     console.log("ESTO ES LA LISTA EN POST: ----- ", lista)
   } else if (req.method === 'GET') {
-    console.log("ESTO ES LA LISTA EN GET: ----- ", lista)
-    // res.json({ message: "ok", data: lista.listaModelos });
+    // console.log("ESTO ES LA LISTA EN GET: ----- ", lista)
+    res.json({ message: "ok", data: lista.listaModelos });
   } else {
     res.status(405).json({ message: "ERROR EN EL SERVIDOR"});
   }
