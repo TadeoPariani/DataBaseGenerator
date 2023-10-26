@@ -12,14 +12,29 @@ export default function LoginForm({ onLogin }) {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+// envío de solicitud a la API
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Credenciales
-    if (username === 'Todler' && password === '1234') {
-      onLogin(username);
-    } else {
-      alert('Credenciales incorrectas');
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        onLogin(data.username);
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message);
+      }
+    } catch (error) {
+      console.error('Error de autenticación:', error);
+      alert('Ocurrió un error durante la autenticación.');
     }
   };
 
