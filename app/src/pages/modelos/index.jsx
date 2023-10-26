@@ -3,9 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 function index() {
+
   const router = useRouter();
   const { lista } = router.query;
-  const listaModelos2 = JSON.parse(decodeURIComponent(lista))
+  if (lista) {
+    const listaModelos2 = JSON.parse(decodeURIComponent(lista));
+  } 
+
+
+  
   
   // const [listaModelos, setListaModelos] = useState([]);
 
@@ -53,18 +59,30 @@ function index() {
 
 
   return(
-      <div>
-        {listaModelos2.length === 0 ? (
-          <div>NO HAY TABLAS CREADAS</div>
-        ) : (
-          <>
-            <h1>Tablas Creadas</h1>
-            <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
-            {console.log(listaModelos2)}
-            <Tabla listaModelos2={listaModelos2}></Tabla>
-          </>
-        )}
+    <div>
+      <>
+        <h1>Tablas Creadas</h1>
+        <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
+        {console.log(listaModelos2)}
+        <Tabla listaModelos2={listaModelos2}></Tabla>
+      </>
     </div>
+
+
+
+
+    // <div>
+    //   {listaModelos2.length === 0 ? (
+    //     <div>NO HAY TABLAS CREADAS</div>
+    //   ) : (
+    //     <>
+    //       <h1>Tablas Creadas</h1>
+    //       <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
+    //       {console.log(listaModelos2)}
+    //       <Tabla listaModelos2={listaModelos2}></Tabla>
+    //     </>
+    //   )}
+    // </div>
   )
 }
 
