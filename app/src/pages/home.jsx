@@ -18,7 +18,7 @@ export default function CrearModelo() {
   }
 
   const eliminarPropiedad = (index) => {
-    const nuevasPropiedades = [...camposModelo];a
+    const nuevasPropiedades = [...camposModelo];
     nuevasPropiedades.splice(index, 1);
     setCampos(nuevasPropiedades);
   };

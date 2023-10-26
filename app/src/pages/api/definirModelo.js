@@ -32,7 +32,7 @@ export function definirModelo(listaModelos) {
         console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition);
         listaModelosDefinidos.push(Modelo);
-        // Modelo.sync({ alter: true });
+        //Modelo.sync({ alter: true });
     })
 
     // campos.forEach(campo => {
