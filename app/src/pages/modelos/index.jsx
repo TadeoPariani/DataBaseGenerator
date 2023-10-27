@@ -34,18 +34,25 @@ function index() {
   };
 
   return(
-    <div>
-      {listaModelos.length === 0 ? (
-        <div>NO HAY TABLAS CREADAS</div>
-      ) : (
-        <>
-          <h1>Tablas Creadas</h1>
-          <button type="submit" onClick={handleSubmit}>Crear Tablas</button>
-          {console.log(listaModelos)}
-          <Tabla listaModelos2={listaModelos}></Tabla>
-        </>
-      )}
-    </div>
+
+    <div className='fixed inset-0 bg-zinc-950 text-white p-4'>
+    {listaModelos2.length === 0 ? (
+      <div className="text-2xl font-bold text-center mt-4">NO HAY TABLAS CREADAS</div>
+    ) : (
+      <>
+        <h1 className="text-3xl font-bold text-center mb-4">Tablas Creadas</h1>
+        <button 
+          type="submit"
+          onClick={handleSubmit}
+          className="block mx-auto bg-teal-950 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Crear Tablas
+        </button>
+        {console.log(listaModelos2)}
+        <Tabla listaModelos2={listaModelos2} />
+      </>
+    )}
+  </div>  
   )
 }
 

@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
 
 export default function CrearModelo() {
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
     <Head>
       <title>Home</title>
       <meta name="Home" content="Home" />
@@ -31,9 +31,23 @@ export default function CrearModelo() {
     <main className>
       <div>
         <GestorCamposModelo/>
+        <button type="button"
+        onClick={agregarCampo}
+        className="bg-teal-950 hover:bg-indigo-700 text-white p-3 rounded my-3 mx-3">Agregar Campo al Modelo</button>
+
+        <button type="button" 
+        onClick={agregarModelo}
+        className="bg-teal-950 hover:bg-indigo-700 text-white p-3 rounded my-3 mx-3">Crear Modelo</button>
+
+        <button type="submit"
+        onClick={handleSubmit}
+        className="bg-teal-950 hover:bg-indigo-700 text-white p-3 rounded my-3 mx-3">Ver Tablas</button>
       </div>
+
     </main>
     <footer>
     </footer>
   </div>
 );}
+
+

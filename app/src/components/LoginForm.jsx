@@ -39,18 +39,28 @@ export default function LoginForm({ onLogin }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Nombre de usuario:</label>
-        <input type="text" value={username} onChange={handleUsernameChange} />
+    <div className="flex items-center justify-center h-screen bg-zinc-950">
+    <form onSubmit={handleSubmit} className="bg-teal-950 text-white p-6 rounded-lg shadow-md w-96">
+      <div className="mb-4">
+        <label className="block text">Nombre de usuario:</label>
+        <input type="text" value={username} onChange={handleUsernameChange} className="w-full p-3 rounded border text-white bg-zinc-950" />
+      </div>
+      <div className="mb-4">
+        <label className="block text">Contraseña:</label>
+        <input type="password" value={password} onChange={handlePasswordChange} className="w-full p-3 rounded border text-white bg-zinc-950" />
       </div>
       <div>
-        <label>Contraseña:</label>
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </div>
-      <div>
-        <button type="submit">Iniciar sesión</button>
+        <button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-700 text-black p-3 rounded bg-stone-400">
+          Iniciar sesión
+        </button>
       </div>
     </form>
+  </div>
+  
+
+
+
+
   );
 }
+

@@ -9,11 +9,6 @@ const Tabla = (props) => {
     // };
 
     return (
-        <div>
-            {listaModelos2.map((modelo, index) => (
-                <div key={index} className='card'>
-                <h2>{modelo.nombreTabla}</h2>
-                <Link href={`/modelos/${modelo.nombreTabla}?lista=${encodeURIComponent(JSON.stringify(listaModelos2))}`}>Ver Tabla</Link>
                 {/* <label>
                     RELACION
                     <select
@@ -31,10 +26,23 @@ const Tabla = (props) => {
                     <option value="n-n"></option>
                     </select>
                 </label> */}
-                </div>
-            ))}
-        </div>
+                
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 mb-5 mx-3">
+        {listaModelos2.map((modelo, index) => (
+          <div key={index} className="bg-gray-200 p-4 rounded shadow-md">
+            <h2 className="text-black xl font-semibold mb-2">{modelo.nombreTabla}</h2>
+            <Link
+              href={`/modelos/${modelo.nombreTabla}?lista=${encodeURIComponent(JSON.stringify(listaModelos2))}`}
+              className="text-blue-600 hover:underline"
+            >
+              Ver Tabla
+            </Link>
+          </div>
+        ))}
+      </div>
     );
 };
 
 export default Tabla;
+
