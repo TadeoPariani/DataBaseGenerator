@@ -9,6 +9,7 @@ const GestorCamposModelo = () => {
   const [nombreModelo, setNombre] = useState("");
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([]);
+  const l = undefined;
 
   const agregarCampo = () => {
     setCampos([...camposModelo,

@@ -43,7 +43,6 @@ export default function CrearModelo() {
         onClick={handleSubmit}
         className="bg-teal-950 hover:bg-indigo-700 text-white p-3 rounded my-3 mx-3">Ver Tablas</button>
       </div>
-
     </main>
     <footer>
     </footer>
