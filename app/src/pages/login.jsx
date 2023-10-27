@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import LoginForm from '../components/LoginForm';
+
+// Dynamic HTML Streaming (DHS)
+const LoginForm = React.lazy(() => import('../components/LoginForm'));
 
 export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,7 +42,9 @@ export default function Login() {
         </div>
       ) : (
         <div>
+        <Suspense fallback={<div>Cargando...</div>}>
           <LoginForm onLogin={handleLogin} />
+        </Suspense>
         </div>
       )}
     </div>
