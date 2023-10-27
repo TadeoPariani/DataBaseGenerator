@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
       <Head>
         <title>Iniciar sesión</title>
         <meta name="description" content="Inicia sesión" />
@@ -28,15 +28,18 @@ export default function Login() {
 
       {isLoggedIn ? (
         <div>
-          <h2>Bienvenido, {loggedInUsername}.</h2>
+          <h1 className="text-4xl font-bold mt-4 mb-3">Bienvenido, {loggedInUsername}.</h1>
           <p>
-            <button onClick={() => router.push('/home')}>Home</button>
-            <button onClick={handleLogout}>Cerrar Sesión</button>
+            <button onClick={() => router.push('/home')} className="bg-cyan-850 hover:bg-blue-700 text-white p-4 rounded mx-3 mr-8">
+              Home
+            </button>
+            <button onClick={handleLogout} className="bg-amber-850 hover:bg-red-700 text-white p-4 rounded mx-3">
+              Cerrar Sesión
+            </button>
           </p>
         </div>
       ) : (
         <div>
-          <h2>Inicio de sesión</h2>
           <LoginForm onLogin={handleLogin} />
         </div>
       )}

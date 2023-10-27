@@ -27,10 +27,11 @@ const ModeloDetalle = () => {
   // });
 
   return (
-    <div>
-      <h1>{nombreTabla}</h1>
-      <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} ></TablaDetalle>
-    </div>
+    <div className="fixed inset-0 bg-zinc-950 p-4">
+    <h1 className="text-3xl font-bold text-center text-white">{nombreTabla}</h1>
+    <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} />
+  </div>
+  
   );
 };
 
