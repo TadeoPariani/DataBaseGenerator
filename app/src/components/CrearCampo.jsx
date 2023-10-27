@@ -14,6 +14,7 @@ const CrearCampo = ({
   onIndexChange,
   onEliminar,
   }) => {
+    
   return (
     <div>
       <label>Nombre del Campo: </label>

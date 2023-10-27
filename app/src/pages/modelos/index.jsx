@@ -1,5 +1,5 @@
 import Tabla from '../../components/Tabla'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
 function index() {
