@@ -8,26 +8,25 @@ const Tabla = (props) => {
     //     alert(valor)
     // };
 
-    return (
-                {/* <label>
-                    RELACION
-                    <select
-                        onChange={(e) => onTablaRelacionChange(e.target.value)}>
-                        {listaModelos2.map((modelo) => (
-                            <option value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
-                        ))} 
-                    </select>
-                </label>
-                <label>
-                    TIPO RELACION
-                    <select>
-                    <option value="1-1">1-1</option>
-                    <option value="1-n">1-n</option>
-                    <option value="n-n"></option>
-                    </select>
-                </label> */}
-                
+    {/* <label>
+      RELACION
+      <select
+          onChange={(e) => onTablaRelacionChange(e.target.value)}>
+          {listaModelos2.map((modelo) => (
+              <option value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
+          ))} 
+      </select>
+  </label>
+  <label>
+      TIPO RELACION
+      <select>
+      <option value="1-1">1-1</option>
+      <option value="1-n">1-n</option>
+      <option value="n-n"></option>
+      </select>
+  </label> */}
 
+    return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 mb-5 mx-3">
         {listaModelos2.map((modelo, index) => (
           <div key={index} className="bg-gray-200 p-4 rounded shadow-md">

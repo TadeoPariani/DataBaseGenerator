@@ -36,11 +36,11 @@ function index() {
   return(
 
     <div className='fixed inset-0 bg-zinc-950 text-white p-4'>
-    {listaModelos2.length === 0 ? (
+    {listaModelos.length === 0 ? (
       <div className="text-2xl font-bold text-center mt-4">NO HAY TABLAS CREADAS</div>
     ) : (
       <>
-        <h1 className="text-3xl font-bold text-center mb-4">Tablas Creadas</h1>
+        <h1 className="text-3xl font-bold text-center mb-4">MODELOS CREADOS</h1>
         <button 
           type="submit"
           onClick={handleSubmit}
@@ -48,8 +48,8 @@ function index() {
         >
           Crear Tablas
         </button>
-        {console.log(listaModelos2)}
-        <Tabla listaModelos2={listaModelos2} />
+        {console.log(listaModelos)}
+        <Tabla listaModelos2={listaModelos} />
       </>
     )}
   </div>  
