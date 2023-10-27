@@ -14,6 +14,7 @@ const CrearCampo = ({
   onIndexChange,
   onEliminar,
   }) => {
+    
   return (
     <div className='bg-zinc-950 text-white p-4 rounded-lg shadow-md w-100 mx-auto mt-4'>
       <label>Nombre del Campo: </label>
