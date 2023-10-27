@@ -24,8 +24,8 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
       <Head>
-        <title>Iniciar sesión</title>
-        <meta name="description" content="Inicia sesión" />
+        <title>DBG</title>
+        <meta name="Login" content="Inicia sesión" />
       </Head>
 
       {isLoggedIn ? (

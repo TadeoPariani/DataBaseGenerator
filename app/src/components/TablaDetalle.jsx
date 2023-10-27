@@ -17,6 +17,8 @@ const TablaDetalle = (props) => {
                                     <h3>Default Value: {campo.defaultValue}</h3>
                                     <h3>Lenght: {campo.lenght}</h3>
                                     <h3>Indice: {campo.index.toString()}</h3>
+                                    <h3>Modelo Relacionado: {campo.relacion}</h3>
+                                    <h3>TipoRelacion: {campo.tipoRelacion}</h3>
                                     <p>-------------------------------------------------</p>
                                 </div>
                             )}

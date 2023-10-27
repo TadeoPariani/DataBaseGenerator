@@ -1,11 +1,19 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import TablaDetalle  from '../../components/TablaDetalle';
+import Head from 'next/head'
 
 const ModeloDetalle = () => {
   const router = useRouter();
   const { nombreTabla, lista } = router.query;
-  const listaModelos = JSON.parse(decodeURIComponent(lista))
+
+  let listaModelos = [];
+
+  try{
+    listaModelos = JSON.parse(decodeURIComponent(lista));
+  } catch (e){
+    console.log("error")
+  }
 
   //LO DE LA API
   //  const [listaModelos, setListaModelos] = useState([]);
@@ -28,6 +36,12 @@ const ModeloDetalle = () => {
 
   return (
     <div className="fixed inset-0 bg-zinc-950 p-4">
+
+    <Head>
+      <title>DBG</title>
+      <meta name="Modelos Creados" content="Modelos Creadas" />
+    </Head>
+
     <h1 className="text-3xl font-bold text-center text-white">{nombreTabla}</h1>
     <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} />
   </div>

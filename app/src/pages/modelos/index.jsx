@@ -1,6 +1,7 @@
 import Tabla from '../../components/Tabla'
 import React from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head'
 
 function index() {
   const router = useRouter();
@@ -15,7 +16,6 @@ function index() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(JSON.stringify(listaModelos))
     const response = await fetch('/api/definirModelos', {
       method: 'POST',
       headers: {
@@ -34,8 +34,13 @@ function index() {
   };
 
   return(
-
     <div className='fixed inset-0 bg-zinc-950 text-white p-4'>
+
+    <Head>
+      <title>DBG</title>
+      <meta name="Modelos" content="Modelos" />
+    </Head>
+
     {listaModelos.length === 0 ? (
       <div className="text-2xl font-bold text-center mt-4">NO HAY TABLAS CREADAS</div>
     ) : (
