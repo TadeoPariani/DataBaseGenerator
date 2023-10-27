@@ -3,7 +3,7 @@ import React from 'react';
 const TablaDetalle = (props) => {
     const {nombreTabla, listaTablas} = props;
     return (
-        <div>
+        <div className="bg-teal-950 text-white p-4 rounded-lg shadow-md w-96 mx-auto mt-4">
             {listaTablas.map((modelo, index) => {
                 if (modelo.nombreTabla === nombreTabla) {
                     return(

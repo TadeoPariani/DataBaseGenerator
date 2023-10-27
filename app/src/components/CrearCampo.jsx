@@ -15,16 +15,18 @@ const CrearCampo = ({
   onEliminar,
   }) => {
   return (
-    <div>
+    <div className='bg-zinc-950 text-white p-4 rounded-lg shadow-md w-100 mx-auto mt-4'>
       <label>Nombre del Campo: </label>
       <input
         type="text"
         placeholder="Nombre del campo"
         value={nombreCampo}
         onChange={(e) => onNombreChange(e.target.value)}
+        className="text-black p-1 rounded border mb-1 mx-2"
       />
 
-      <label>
+      <label
+      className="text-black  mb-1 mx-3">
         Tipo 
         <select 
           onChange={(e) => onTipoChange(e.target.value)}>
@@ -44,6 +46,7 @@ const CrearCampo = ({
         <input 
         type="checkbox"
         onChange={(e) => onUnicoChange(e.target.checked)}
+        className="p-1 rounded border mb-1 mx-3"
         />
       </label>
 
@@ -52,6 +55,7 @@ const CrearCampo = ({
         <input 
         type="checkbox"
         onChange={(e) => onNotNullChange(e.target.checked)}
+        className="p-1 rounded border mb-1 mx-3"
         />
       </label>
 
@@ -60,6 +64,7 @@ const CrearCampo = ({
         <input 
         type="checkbox"
         onChange={(e) => onIndexChange(e.target.checked)}
+        className="p-1 rounded border mb-1 mx-3"
         />
       </label>
 
@@ -69,6 +74,7 @@ const CrearCampo = ({
         placeholder="Default Value"
         value={defaultValue}
         onChange={(e) => onDefaultValueChange(e.target.value)}
+        className=" text-black p-1 rounded border mb-1 mx-3"
         />
       </label>
 
@@ -79,10 +85,12 @@ const CrearCampo = ({
             placeholder="Longitud"
             value={lenght}
             onChange={(e) => onLenghtChange(e.target.value)}
+            className="text-black p-1 rounded border mb-1 mx-3"
           />
         </label>
       }
-      <button type="button" onClick={onEliminar}>Eliminar Campo</button>
+      <button type="button" onClick={onEliminar}
+      className="p-1 rounded border mb-1 mx-3">Eliminar Campo</button>
     </div>
   );
 };
