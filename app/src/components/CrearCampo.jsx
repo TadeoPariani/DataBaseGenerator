@@ -30,20 +30,22 @@ const CrearCampo = ({
       />
 
       <label
-      className="text-black  mb-1 mx-3">
-        Tipo 
-        <select 
-          onChange={(e) => onTipoChange(e.target.value)}>
-          <option value="STRING">STRING</option>
-          <option value="CHAR">CHAR</option>
-          <option value="INTEGER">INTEGER</option>
-          <option value="REAL">REAL</option>
-          <option value="DECIMAL">DECIMAL</option>
-          <option value="BOOLEAN">BOOLEAN</option>
-          <option value="DATE">DATE</option>
-          <option value="ENUM">ENUM</option>
-        </select>
-      </label>
+      className="text-white mb-1 mx-3">
+        Tipo:
+      </label>  
+      <select className='text-black mb-1 mx-3'
+        onChange={(e) => onTipoChange(e.target.value)}>
+        <option value=""></option>
+        <option value="STRING">STRING</option>
+        <option value="CHAR">CHAR</option>
+        <option value="INTEGER">INTEGER</option>
+        <option value="REAL">REAL</option>
+        <option value="DECIMAL">DECIMAL</option>
+        <option value="BOOLEAN">BOOLEAN</option>
+        <option value="DATE">DATE</option>
+        <option value="ENUM">ENUM</option>
+      </select>
+      
 
       <label>
         Es Unico: 

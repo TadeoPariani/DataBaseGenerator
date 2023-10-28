@@ -13,7 +13,7 @@ const GestorCamposModelo = () => {
     setCampos([...camposModelo,
       {
         nombre: '',
-        tipo: 'STRING',
+        tipo: '',
         esUnico: false,
         NotNull: false,
         defaultValue: '',
@@ -37,7 +37,7 @@ const GestorCamposModelo = () => {
 
   const agregarModelo = () => {
     camposModelo.map((campo, index) => {
-      if (nombreModelo === ""){
+      if (nombreModelo === "" || campo.tipo === "" || campo.nombre === ""){
         alert('Revise los Campos');
       } else {
         const copiaCampos = JSON.parse(JSON.stringify(camposModelo));

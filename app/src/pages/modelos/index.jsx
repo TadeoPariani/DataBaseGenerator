@@ -25,11 +25,11 @@ function index() {
     });
 
     if (response.ok) {
-      alert("Se creo Correctamente");
+      alert("Tablas Creadas Correctamente");
       await response.json();
       router.push(`/modelos?lista=${JSON.stringify(listaModelos)}`)
     } else {
-      alert('Error al crear el modelo');
+      alert('Error Al Crear Las Tablas');
     }
   };
 
