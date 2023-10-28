@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
 import TablaDetalle  from '../../components/TablaDetalle';
 import Head from 'next/head'
 
 const ModeloDetalle = () => {
   const router = useRouter();
   const { nombreTabla, lista } = router.query;
-
   let listaModelos = [];
 
   try{
@@ -44,6 +42,8 @@ const ModeloDetalle = () => {
 
     <h1 className="text-3xl font-bold text-center text-white">{nombreTabla}</h1>
     <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} />
+    <footer>
+    </footer>
   </div>
   
   );
