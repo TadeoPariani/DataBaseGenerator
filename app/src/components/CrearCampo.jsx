@@ -2,6 +2,7 @@ import React from 'react';
 
 const CrearCampo = ({
   nombreCampo, 
+  listaModelos,
   defaultValue, 
   type,
   lenght,
@@ -12,6 +13,8 @@ const CrearCampo = ({
   onDefaultValueChange, 
   onLenghtChange,
   onIndexChange,
+  onRelacionChange,
+  onTipoRelacionChange,
   onEliminar,
   }) => {
     
@@ -27,20 +30,22 @@ const CrearCampo = ({
       />
 
       <label
-      className="text-black  mb-1 mx-3">
-        Tipo 
-        <select 
-          onChange={(e) => onTipoChange(e.target.value)}>
-          <option value="STRING">STRING</option>
-          <option value="CHAR">CHAR</option>
-          <option value="INTEGER">INTEGER</option>
-          <option value="REAL">REAL</option>
-          <option value="DECIMAL">DECIMAL</option>
-          <option value="BOOLEAN">BOOLEAN</option>
-          <option value="DATE">DATE</option>
-          <option value="ENUM">ENUM</option>
-        </select>
-      </label>
+      className="text-white mb-1 mx-3">
+        Tipo:
+      </label>  
+      <select className='text-black mb-1 mx-3'
+        onChange={(e) => onTipoChange(e.target.value)}>
+        <option value=""></option>
+        <option value="STRING">STRING</option>
+        <option value="CHAR">CHAR</option>
+        <option value="INTEGER">INTEGER</option>
+        <option value="REAL">REAL</option>
+        <option value="DECIMAL">DECIMAL</option>
+        <option value="BOOLEAN">BOOLEAN</option>
+        <option value="DATE">DATE</option>
+        <option value="ENUM">ENUM</option>
+      </select>
+      
 
       <label>
         Es Unico: 
@@ -92,6 +97,30 @@ const CrearCampo = ({
       }
       <button type="button" onClick={onEliminar}
       className="p-1 rounded border mb-1 mx-3">Eliminar Campo</button>
+
+      <div>
+        <label  >
+          RELACION
+          <select onChange={(e) => onRelacionChange(e.target.value)} >
+              <option value=""></option>
+              {listaModelos.map((modelo) => (
+                  <option className="text-blue-600 hover:underline" value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
+              ))} 
+          </select>
+        </label>
+
+        <label>
+          TIPO RELACION
+            <select onChange={(e) => onTipoRelacionChange(e.target.value)}>
+            <option value=""></option>
+            <option value="1-1">1-1</option>
+            <option value="1-n">1-n</option>
+            <option value="n-n">n-n</option>
+          </select>
+        </label> 
+      </div>
+
+
     </div>
   );
 };

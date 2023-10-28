@@ -1,6 +1,4 @@
-// GestorCamposModelo.js
 import React, { useState } from 'react';
-import Head from 'next/head'
 import CrearCampo from '../components/CrearCampo';
 import { useRouter } from 'next/router'
 
@@ -9,22 +7,20 @@ const GestorCamposModelo = () => {
   const [nombreModelo, setNombre] = useState("");
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([]);
-  const l = undefined;
 
   const agregarCampo = () => {
     setCampos([...camposModelo,
       {
         nombre: '',
-        tipo: 'STRING',
+        tipo: '',
         esUnico: false,
         NotNull: false,
         defaultValue: '',
         lenght: null,
         index: false,
-        relacion: '',
-        tipoRelacion: ''
-      }
-    ]);
+        relacion: null,
+        tipoRelacion: null
+      }]);
   };
 
   const eliminarCampo = (index) => {
@@ -35,21 +31,20 @@ const GestorCamposModelo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(JSON.stringify(listaModelos))
     router.push(`/modelos?lista=${encodeURIComponent(JSON.stringify(listaModelos))}`)
   };
 
   const agregarModelo = () => {
     camposModelo.map((campo, index) => {
-      if (nombreModelo === ""){
+      if (nombreModelo === "" || campo.tipo === "" || campo.nombre === ""){
         alert('Revise los Campos');
       } else {
         const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
         setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
+        alert(JSON.stringify(listaModelos))
         setCampos([])
         setNombre("")
-      }
-    })
+      }})
   };
 
   const handleCamposChange = (index, field, valor) => {
@@ -86,14 +81,16 @@ const GestorCamposModelo = () => {
     handleCamposChange(index, 'lenght', valor);
   };
 
+  const handleRelacionChange = (valor, index) => {
+    handleCamposChange(index, 'relacion', valor);
+  };
+
+  const handleTipoRelacionChange = (valor, index) => {
+    handleCamposChange(index, 'tipoRelacion', valor);
+  };
+
   return (
     <div>
-    <Head>
-      <title>Home</title>
-      <meta name="Home" content="Home" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
     <main className>
       <form>
         <div>        
@@ -102,6 +99,7 @@ const GestorCamposModelo = () => {
             <input
               type="text"
               value={nombreModelo}
+              className="text-black p-1 rounded border mb-1 mx-2"
               onChange={(e) => setNombre(e.target.value)}
             />
           </label>
@@ -110,6 +108,7 @@ const GestorCamposModelo = () => {
         {camposModelo.map((campo, index) => (
           <CrearCampo
             key={index}
+            listaModelos={listaModelos}
             nombreCampo={campo.nombre}
             defaultValue={campo.defaultValue}
             type={campo.tipo}
@@ -121,6 +120,8 @@ const GestorCamposModelo = () => {
             onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
             onLenghtChange={(valor) => handleLenghtChange(valor, index)}
             onIndexChange={(valor) => handleIndexChange(valor, index)}
+            onRelacionChange={(valor) => handleRelacionChange(valor, index)}
+            onTipoRelacionChange={(valor) => handleTipoRelacionChange(valor, index)}
             onEliminar={() => eliminarCampo(index)}
           />
         ))}
