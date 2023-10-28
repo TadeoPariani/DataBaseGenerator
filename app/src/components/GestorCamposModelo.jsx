@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Head from 'next/head'
 import CrearCampo from '../components/CrearCampo';
 import { useRouter } from 'next/router'
 

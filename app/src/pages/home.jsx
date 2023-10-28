@@ -20,14 +20,14 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function CrearModelo() {
+export default function Home() {
   return (
     <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
     <Head>
       <title>DBG</title>
       <meta name="Home" content="Home" />
     </Head>
-    <main className>
+    <main>
       <div>
         <GestorCamposModelo/>
       </div>

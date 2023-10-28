@@ -54,7 +54,7 @@ function index() {
           Crear Tablas
         </button>
         {console.log(listaModelos)}
-        <Tabla listaModelos2={listaModelos} />
+        <Tabla listaModelos={listaModelos} />
       </>
     )}
   </div>  
