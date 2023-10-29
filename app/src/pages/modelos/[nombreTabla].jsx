@@ -14,13 +14,13 @@ const ModeloDetalle = () => {
   }
 
   return (
-    <div className="inset-0 bg-zinc-950 p-4">
+    <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
     <Head>
       <title>DBG</title>
       <meta name="Modelos Creados" content="Modelos Creadas" />
     </Head>
 
-    <h1 className="text-3xl font-bold text-center text-white">{nombreTabla}</h1>
+    <h1 className="text-3xl font-bold text-center text-white pt-14">{nombreTabla}</h1>
     <TablaDetalle nombreTabla={nombreTabla} listaTablas={listaModelos} />
     <footer>
     </footer>

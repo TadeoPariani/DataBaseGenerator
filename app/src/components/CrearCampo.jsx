@@ -92,7 +92,7 @@ const CrearCampo = ({
               placeholder="Longitud"
               value={lenght}
               onChange={(e) => onLenghtChange(e.target.value)}
-              className="text-black p-1 rounded-border mb-1 mx-3"
+              className="text-black p-1 rounded border mb-1 mx-3"
             />
           </label>
         }
