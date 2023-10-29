@@ -29,7 +29,7 @@ export default function Home() {
       <meta name="Home" content="Home" />
     </Head>
     <main className="flex-grow">
-      <div className='flex items-center justify-center h-screen bg-zinc-950 text-white'>
+      <div className='flex items-center justify-center min-h-screen bg-zinc-950 text-white'>
         <GestorCamposModelo />
       </div>
     </main>
