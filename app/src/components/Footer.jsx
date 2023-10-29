@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-teal-950 text-white p-4 mt-auto">
       <div className="mx-auto flex justify-between items-center">
         <div className="flex items-center">
-            <img src="logoDB.png" alt="Logo" className="h-12 w-12 mr-4" />
+            <img src="LogoDB.png" alt="Logo" className="h-12 w-12 mr-4" />
           <span className="text-lg font-bold text-orange-300">DatabaseGenerator</span>
         </div>
         <div className="flex space-x-4">

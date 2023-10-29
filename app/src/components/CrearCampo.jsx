@@ -19,7 +19,7 @@ const CrearCampo = ({
   }) => {
     
   return (
-    <div className='bg-zinc-950 text-white p-4 rounded-lg shadow-md w-100 mx-auto mt-4'>
+    <div className='bg-teal-900 text-white p-4 rounded-lg shadow-md w-200 mx-auto mt-4 ml-4'>
       <label>Nombre del Campo: </label>
       <input
         type="text"
@@ -33,7 +33,7 @@ const CrearCampo = ({
       className="text-white mb-1 mx-3">
         Tipo:
       </label>  
-      <select className='text-black mb-1 mx-3'
+      <select className='text-black mb-1 mx-3 rounded-lg'
         onChange={(e) => onTipoChange(e.target.value)}>
         <option value=""></option>
         <option value="STRING">STRING</option>
@@ -70,38 +70,40 @@ const CrearCampo = ({
         <input 
         type="checkbox"
         onChange={(e) => onIndexChange(e.target.checked)}
-        className="p-1 rounded border mb-1 mx-3"
+        className="p-1 rounded-border mb-1 mx-3"
         />
       </label>
 
-      <label>
-        <input 
-        type="text"
-        placeholder="Default Value"
-        value={defaultValue}
-        onChange={(e) => onDefaultValueChange(e.target.value)}
-        className=" text-black p-1 rounded border mb-1 mx-3"
-        />
-      </label>
-
-      {type !== "DATE" && type !== "BOOLEAN" &&
+      <div className='p-4 rounded-lg shadow-md w-200 mx-auto mt-4'>
         <label>
           <input 
-            type="text"
-            placeholder="Longitud"
-            value={lenght}
-            onChange={(e) => onLenghtChange(e.target.value)}
-            className="text-black p-1 rounded border mb-1 mx-3"
+          type="text"
+          placeholder="Default Value"
+          value={defaultValue}
+          onChange={(e) => onDefaultValueChange(e.target.value)}
+          className=" text-black p-1 rounded border mb-1 mx-3"
           />
         </label>
-      }
-      <button type="button" onClick={onEliminar}
-      className="p-1 rounded border mb-1 mx-3">Eliminar Campo</button>
+
+        {type !== "DATE" && type !== "BOOLEAN" &&
+          <label>
+            <input 
+              type="text"
+              placeholder="Longitud"
+              value={lenght}
+              onChange={(e) => onLenghtChange(e.target.value)}
+              className="text-black p-1 rounded-border mb-1 mx-3"
+            />
+          </label>
+        }
+        <button type="button" onClick={onEliminar}
+        className="bg-red-500 p-1 rounded border mb-1 mx-3">Eliminar Campo</button>
+      </div>
 
       <div>
         <label  >
           RELACION
-          <select className='text-black mb-1 mx-3 mt-3'
+          <select className='text-black mb-1 mx-3 mt-3 rounded-lg'
               onChange={(e) => onRelacionChange(e.target.value)} >
               <option value=""></option>
               {listaModelos.map((modelo) => (
@@ -112,7 +114,7 @@ const CrearCampo = ({
 
         <label>
           TIPO RELACION
-            <select className='text-black mb-1 mx-3 mt-3' 
+            <select className='text-black mb-1 mx-3 mt-3 rounded-lg' 
             onChange={(e) => onTipoRelacionChange(e.target.value)}>
             <option value=""></option>
             <option value="1-1">1-1</option>
@@ -121,8 +123,6 @@ const CrearCampo = ({
           </select>
         </label> 
       </div>
-
-
     </div>
   );
 };

@@ -93,7 +93,7 @@ const GestorCamposModelo = () => {
     <div>
     <main className>
       <form>
-        <div>        
+        <div className='mt-4 ml-4'>        
           <label>
             Nombre del Modelo:
             <input

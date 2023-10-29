@@ -13,28 +13,8 @@ const ModeloDetalle = () => {
     console.log("error")
   }
 
-  //LO DE LA API
-  //  const [listaModelos, setListaModelos] = useState([]);
-  // useEffect(() => {
-  //   async function obtenerLista() {
-  //     try {
-  //       const response = await fetch('/api/Metodos', {
-  //           method: 'GET',
-  //           headers: { 'Content-Type': 'application/json' },
-  //       });
-  //       const data = await response.json();
-  //       const listaModelos = data.data
-  //       setListaModelos(listaModelos)
-  //     } catch (error) {
-  //       console.error('Error al obtener la lista:', error);
-  //     }
-  //   }
-  //   obtenerLista();
-  // });
-
   return (
-    <div className="fixed inset-0 bg-zinc-950 p-4">
-
+    <div className="inset-0 bg-zinc-950 p-4">
     <Head>
       <title>DBG</title>
       <meta name="Modelos Creados" content="Modelos Creadas" />

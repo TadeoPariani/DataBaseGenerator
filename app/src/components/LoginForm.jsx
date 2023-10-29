@@ -56,11 +56,6 @@ export default function LoginForm({ onLogin }) {
       </div>
     </form>
   </div>
-  
-
-
-
-
   );
 }
 

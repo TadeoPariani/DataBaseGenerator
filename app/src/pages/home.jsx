@@ -33,7 +33,7 @@ export default function Home() {
         <GestorCamposModelo />
       </div>
     </main>
-    <footer>
+    <footer className='mt-4'>
       <Footer />
     </footer>
   </div>

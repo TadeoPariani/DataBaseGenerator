@@ -13,14 +13,12 @@ export default function Index() {
       </Head>
 
       <main className="flex-grow text-center">
-      <h1 className="text-4xl font-bold mt-4 mb-4">Welcome to Database Generator</h1>
+      <h1 className="text-4xl font-bold mt-14 mb-4">Welcome to Database Generator</h1>
         <Link href='/login' className="text-blue-500 hover:underline">
           Login
         </Link>
-        <img src="gendb.jpeg" alt="Logo" className="mx-auto mt-16 mb-16" style={{ width: '400px', height: '300px' }} />
-        <h1 className="text-4xl font-bold mt-4">Start generating models </h1>
+        <img src="database.png" alt="Logo" className="mx-auto mt-16 mb-16" style={{ width: '200px', height: '200px' }} />
       </main>
-
       <footer>
         <Footer />
       </footer>
