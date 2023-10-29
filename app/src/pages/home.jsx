@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { authMiddleware } from '../utils/authMiddleware';
 import GestorCamposModelo from '../components/GestorCamposModelo';
+import Footer from '../components/Footer'; 
 
 export async function getServerSideProps(context) {
   const auth = await authMiddleware(context);
@@ -22,17 +23,18 @@ export async function getServerSideProps(context) {
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
+    <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
     <Head>
       <title>DBG</title>
       <meta name="Home" content="Home" />
     </Head>
-    <main>
-      <div>
-        <GestorCamposModelo/>
+    <main className="flex-grow">
+      <div className='flex items-center justify-center h-screen bg-zinc-950 text-white'>
+        <GestorCamposModelo />
       </div>
     </main>
     <footer>
+      <Footer />
     </footer>
   </div>
 );}

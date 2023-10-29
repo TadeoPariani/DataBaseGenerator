@@ -1,6 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Footer from '../components/Footer'; 
 
 // Dynamic HTML Streaming (DHS)
 const LoginForm = React.lazy(() => import('../components/LoginForm'));
@@ -22,7 +23,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-zinc-950 text-white">
+    <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
       <Head>
         <title>DBG</title>
         <meta name="Login" content="Inicia sesión" />
@@ -47,6 +48,9 @@ export default function Login() {
         </Suspense>
         </div>
       )}
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
