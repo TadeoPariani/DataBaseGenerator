@@ -101,7 +101,8 @@ const CrearCampo = ({
       <div>
         <label  >
           RELACION
-          <select onChange={(e) => onRelacionChange(e.target.value)} >
+          <select className='text-black mb-1 mx-3 mt-3'
+              onChange={(e) => onRelacionChange(e.target.value)} >
               <option value=""></option>
               {listaModelos.map((modelo) => (
                   <option className="text-blue-600 hover:underline" value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
@@ -111,7 +112,8 @@ const CrearCampo = ({
 
         <label>
           TIPO RELACION
-            <select onChange={(e) => onTipoRelacionChange(e.target.value)}>
+            <select className='text-black mb-1 mx-3 mt-3' 
+            onChange={(e) => onTipoRelacionChange(e.target.value)}>
             <option value=""></option>
             <option value="1-1">1-1</option>
             <option value="1-n">1-n</option>
