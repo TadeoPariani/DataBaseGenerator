@@ -3,6 +3,7 @@ import { authMiddleware } from '../utils/authMiddleware';
 import GestorCamposModelo from '../components/GestorCamposModelo';
 import Footer from '../components/Footer'; 
 
+
 export async function getServerSideProps(context) {
   const auth = await authMiddleware(context);
 

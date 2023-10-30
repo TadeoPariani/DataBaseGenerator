@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import CrearCampo from '../components/CrearCampo';
+import React, { useState, Suspense } from 'react';
 import { useRouter } from 'next/router'
+
+// Dynamic HTML Streaming (DHS)
+const CrearCampo = React.lazy(() => import('../components/CrearCampo'));
 
 const GestorCamposModelo = () => {
   const router = useRouter()
@@ -104,27 +106,28 @@ const GestorCamposModelo = () => {
           </label>
         </div>
 
-        {camposModelo.map((campo, index) => (
-          <CrearCampo
-            key={index}
-            listaModelos={listaModelos}
-            nombreCampo={campo.nombre}
-            defaultValue={campo.defaultValue}
-            type={campo.tipo}
-            lenght = {campo.lenght}
-            onNombreChange={(valor) => handleNombreChange(valor, index)}
-            onTipoChange={(valor) => handleTipoChange(valor, index)}
-            onUnicoChange={(valor) => handleUnicoChange(valor, index)}
-            onNotNullChange={(valor) => handleNotNullChange(valor, index)}
-            onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
-            onLenghtChange={(valor) => handleLenghtChange(valor, index)}
-            onIndexChange={(valor) => handleIndexChange(valor, index)}
-            onRelacionChange={(valor) => handleRelacionChange(valor, index)}
-            onTipoRelacionChange={(valor) => handleTipoRelacionChange(valor, index)}
-            onEliminar={() => eliminarCampo(index)}
-          />
+        {camposModelo.map((campo, index) => ( 
+          <Suspense fallback={<div>Cargando...</div>}>
+            <CrearCampo
+              key={index}
+              listaModelos={listaModelos}
+              nombreCampo={campo.nombre}
+              defaultValue={campo.defaultValue}
+              type={campo.tipo}
+              lenght = {campo.lenght}
+              onNombreChange={(valor) => handleNombreChange(valor, index)}
+              onTipoChange={(valor) => handleTipoChange(valor, index)}
+              onUnicoChange={(valor) => handleUnicoChange(valor, index)}
+              onNotNullChange={(valor) => handleNotNullChange(valor, index)}
+              onDefaultValueChange={(valor) => handleDefaultValueChange(valor, index)}
+              onLenghtChange={(valor) => handleLenghtChange(valor, index)}
+              onIndexChange={(valor) => handleIndexChange(valor, index)}
+              onRelacionChange={(valor) => handleRelacionChange(valor, index)}
+              onTipoRelacionChange={(valor) => handleTipoRelacionChange(valor, index)}
+              onEliminar={() => eliminarCampo(index)}
+            />
+          </Suspense>
         ))}
-
         <button type="button"
         onClick={agregarCampo}
         className="bg-teal-950 hover:bg-indigo-700 text-white p-3 rounded my-3 mx-3">Agregar Campo al Modelo</button>
