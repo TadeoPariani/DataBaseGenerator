@@ -41,7 +41,6 @@ const GestorCamposModelo = () => {
       } else {
         const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
         setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
-        alert(JSON.stringify(listaModelos))
         setCampos([])
         setNombre("")
       }})

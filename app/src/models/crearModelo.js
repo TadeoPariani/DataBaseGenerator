@@ -8,11 +8,12 @@ export function crearModelo(lista) {
     let { listaModelos } = lista;
     console.log("ANTES DE DEFINIR", listaModelos);
     const listaModelosDefinidos = []
-    const modelDefinition = {};
+    let modelDefinition = {};
+    let indexDefinition = {}
     let indexObject = {
         indexes: []
     }
-    let indexDefinition = {}
+    
     
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
@@ -32,11 +33,9 @@ export function crearModelo(lista) {
                 defaultValue: campo.defaultValue
             }
         })
-
-        console.log("ESTA ES LA DEFINICON DEL MODELO: ", modelDefinition)
-        console.log("INDEX OBJECT: ", indexObject.indexes)
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition, indexObject);
         listaModelosDefinidos.push(Modelo);
-        //Modelo.sync({ alter : true });
+        Modelo.sync({ alter : true });
+        modelDefinition = {}
     })
 }
