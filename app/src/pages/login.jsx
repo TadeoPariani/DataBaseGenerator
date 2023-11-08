@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import LoginForm from '../components/LoginForm'
+import Menu from '../components/Menu';
 
 export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +24,7 @@ export default function Login() {
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
       <Head>
         <title>DBG</title>
+        <Menu />
         <meta name="Login" content="Inicia sesión" />
       </Head>
 

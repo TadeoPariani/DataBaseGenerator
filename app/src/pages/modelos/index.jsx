@@ -2,6 +2,7 @@ import Tabla from '../../components/Tabla'
 import React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
+import Menu from '../../components/Menu';
 
 function index() {
   const router = useRouter();
@@ -38,6 +39,7 @@ function index() {
 
     <Head>
       <title>DBG</title>
+      <Menu />
       <meta name="Modelos" content="Modelos" />
     </Head>
 

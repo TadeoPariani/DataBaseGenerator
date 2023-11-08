@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { authMiddleware } from '../utils/authMiddleware';
 import GestorCamposModelo from '../components/GestorCamposModelo';
 import Footer from '../components/Footer'; 
+import Menu from '../components/Menu';
 
 
 export async function getServerSideProps(context) {
@@ -27,6 +28,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
     <Head>
       <title>DBG</title>
+      <Menu />
       <meta name="Home" content="Home" />
     </Head>
     <main className="flex-grow">

@@ -9,7 +9,14 @@ const Menu = () => {
       <Link href="/login">
         <button className={styles['menu-button']}>Login</button>
       </Link>
-     
+
+      <Link href="/">
+        <button className={styles['menu-button']}>Inicio</button>
+      </Link>
+
+      <Link href="/home">
+        <button className={styles['menu-button']}>Home</button>
+      </Link>
     </div>
   );
 };
