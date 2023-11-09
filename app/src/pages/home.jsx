@@ -28,9 +28,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
     <Head>
       <title>DBG</title>
-      <Menu />
       <meta name="Home" content="Home" />
     </Head>
+    <Menu />
     <main className="flex-grow">
       <div className='flex items-center justify-center min-h-screen bg-zinc-950 text-white'>
         <GestorCamposModelo />

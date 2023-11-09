@@ -17,6 +17,10 @@ const Menu = () => {
       <Link href="/home">
         <button className={styles['menu-button']}>Home</button>
       </Link>
+
+      <Link href="/Nextjs">
+        <button className={styles['menu-button']}>NextJS</button>
+      </Link>
     </div>
   );
 };

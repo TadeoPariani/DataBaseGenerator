@@ -24,9 +24,9 @@ export default function Login() {
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
       <Head>
         <title>DBG</title>
-        <Menu />
         <meta name="Login" content="Inicia sesión" />
       </Head>
+      <Menu />
 
       {isLoggedIn ? (
         <div className='mx-auto mt-14 mb-14 p-4 '>
