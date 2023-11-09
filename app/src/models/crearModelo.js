@@ -1,8 +1,23 @@
 import { Sequelize, DataTypes, Model } from 'sequelize'
+import fs from 'fs';
+
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite'
 });
+
+// const modeloTemplate = (modelName, fields) => `
+// const { DataTypes } = require('sequelize');
+
+// module.exports = (sequelize) => {
+//   const ${modelName} = sequelize.define('${modelName}', {
+//     ${fields}
+//   });
+
+//   return ${modelName};
+// };
+// `;
+
 
 export function crearModelo(lista) {
     let { listaModelos } = lista;
@@ -13,7 +28,6 @@ export function crearModelo(lista) {
     let indexObject = {
         indexes: []
     }
-    
     
     listaModelos.forEach(model => {
         console.log(model.nombreTabla);
@@ -36,6 +50,8 @@ export function crearModelo(lista) {
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition, indexObject);
         listaModelosDefinidos.push(Modelo);
         Modelo.sync({ alter : true });
+        //const modeloCode = modeloTemplate(model.nombreTabla, JSON.stringify(modelDefinition, null, 2));
+        //fs.writeFileSync(`./modelos/${model.nombreTabla}.js`, modeloCode);
         modelDefinition = {}
     })
 }

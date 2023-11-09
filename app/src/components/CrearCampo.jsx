@@ -38,11 +38,14 @@ const CrearCampo = ({
         <option value=""></option>
         <option value="STRING">STRING</option>
         <option value="CHAR">CHAR</option>
+        <option value="TEXT">TEXT</option>
         <option value="INTEGER">INTEGER</option>
+        <option value="FLOAT">FLOAT</option>
         <option value="REAL">REAL</option>
         <option value="DECIMAL">DECIMAL</option>
         <option value="BOOLEAN">BOOLEAN</option>
         <option value="DATE">DATE</option>
+        <option value="TIME">TIME</option>
         <option value="ENUM">ENUM</option>
       </select>
       
