@@ -12,7 +12,7 @@ const Footer = () => {
           <img src="github.png" alt="Logo" className="h-8 w-9 mr-4" />
           <a href="https://github.com/TadeoPariani" className="hover:text-indigo-500">Contacto</a>
           <img src="contact.png" alt="Logo" className="h-8 w-9" />
-          <a href="/https://github.com/TadeoPariani/DataBaseGenerator" className="hover:text-indigo-500">Info</a>
+          <a href="https://github.com/TadeoPariani/DataBaseGenerator" className="hover:text-indigo-500">Info</a>
         </div>
       </div>
     </footer>

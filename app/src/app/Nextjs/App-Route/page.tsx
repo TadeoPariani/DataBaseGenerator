@@ -6,7 +6,7 @@ export default function Page() {
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
       <Head>
         <title>DBG</title>
-        <meta name="description" content="What is NextJS" />
+        <meta name="description" content="What is App Route in NextJS" />
         <link rel="icon" href="/LogoDB.png" />
       </Head>
       <main className="flex-grow text-center">
