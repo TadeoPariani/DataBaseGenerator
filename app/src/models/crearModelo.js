@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes, Model } from 'sequelize'
-import fs from 'fs';
+const shell = require('shelljs');
+
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -17,6 +18,9 @@ const sequelize = new Sequelize({
 //   return ${modelName};
 // };
 // `;
+
+//npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x '' -e sqlite
+
 
 
 export function crearModelo(lista) {
@@ -50,8 +54,16 @@ export function crearModelo(lista) {
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition, indexObject);
         listaModelosDefinidos.push(Modelo);
         Modelo.sync({ alter : true });
-        //const modeloCode = modeloTemplate(model.nombreTabla, JSON.stringify(modelDefinition, null, 2));
-        //fs.writeFileSync(`./modelos/${model.nombreTabla}.js`, modeloCode);
+
+        const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
+
+        // Verificar si el comando se ejecutó correctamente
+        if (resultado.code === 0) {
+            console.log('El comando se ejecutó correctamente');
+        } else {
+            console.error('Error al ejecutar el comando', resultado.stderr);
+        }
+
         modelDefinition = {}
     })
 }
