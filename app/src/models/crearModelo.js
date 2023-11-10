@@ -6,8 +6,6 @@ const sequelize = new Sequelize({
     storage: './database.sqlite'
 });
 
-
-
 export function crearModelo(lista) {
     function ejecutarComando() {
         const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
@@ -47,10 +45,11 @@ export function crearModelo(lista) {
         })
         const Modelo = sequelize.define(model.nombreTabla, modelDefinition, indexObject);
         listaModelosDefinidos.push(Modelo);
-        Modelo.sync({ alter : true });
+        //Modelo.sync({ alter : true });
         modelDefinition = {}
     })
     ejecutarComando()
+    
     // const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
     // if (resultado.code === 0) {
     //     console.log('El comando se ejecutó correctamente');
