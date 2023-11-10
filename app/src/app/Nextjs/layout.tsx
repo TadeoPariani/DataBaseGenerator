@@ -12,8 +12,8 @@ export default function NextjsLayout({
   return (
     <section>
       <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
+        <Menu/>
         <main className="flex-grow text-center">
-          <Menu/>
           <div>{children}</div>
         </main>
         <Footer />

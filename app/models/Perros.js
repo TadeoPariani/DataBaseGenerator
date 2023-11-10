@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       primaryKey: true
     },
-    Raza: {
-      type: DataTypes.STRING(100),
+    p: {
+      type: DataTypes.CHAR(100),
       allowNull: false,
-      defaultValue: "raza",
+      defaultValue: "p",
       unique: true
     }
   }, {
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "sqlite_autoindex_Perros_1",
         unique: true,
         fields: [
-          { name: "Raza" },
+          { name: "p" },
         ]
       },
     ]
