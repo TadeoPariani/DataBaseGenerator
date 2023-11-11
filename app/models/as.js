@@ -1,28 +1,28 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Localidads', {
+  return sequelize.define('as', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: true,
       primaryKey: true
     },
-    Name: {
+    a: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      defaultValue: "Name",
+      defaultValue: "a",
       unique: true
     }
   }, {
     sequelize,
-    tableName: 'Localidads',
+    tableName: 'as',
     timestamps: true,
     indexes: [
       {
-        name: "sqlite_autoindex_Localidads_1",
+        name: "sqlite_autoindex_as_1",
         unique: true,
         fields: [
-          { name: "Name" },
+          { name: "a" },
         ]
       },
     ]

@@ -1,22 +1,17 @@
 var DataTypes = require("sequelize").DataTypes;
-var _Localidads = require("./Localidads");
-var _Pais = require("./Pais");
-var _Provincia = require("./Provincia");
+var _as = require("./as");
+var _es = require("./es");
 
 function initModels(sequelize) {
-  var Localidads = _Localidads(sequelize, DataTypes);
-  var Pais = _Pais(sequelize, DataTypes);
-  var Provincia = _Provincia(sequelize, DataTypes);
+  var as = _as(sequelize, DataTypes);
+  var es = _es(sequelize, DataTypes);
 
-  Provincia.belongsTo(Localidads, { as: "Localidad", foreignKey: "LocalidadId"});
-  Localidads.hasMany(Provincia, { as: "Provincia", foreignKey: "LocalidadId"});
-  Pais.belongsTo(Provincia, { as: "Provincium", foreignKey: "ProvinciumId"});
-  Provincia.hasMany(Pais, { as: "Pais", foreignKey: "ProvinciumId"});
+  es.belongsTo(as, { as: "aId_a", foreignKey: "aId"});
+  as.hasMany(es, { as: "es", foreignKey: "aId"});
 
   return {
-    Localidads,
-    Pais,
-    Provincia,
+    as,
+    es,
   };
 }
 module.exports = initModels;

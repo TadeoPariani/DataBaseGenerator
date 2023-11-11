@@ -102,30 +102,6 @@ const CrearCampo = ({
         <button type="button" onClick={onEliminar}
         className="bg-red-500 p-1 rounded border mb-1 mx-3">Eliminar Campo</button>
       </div>
-
-      <div>
-        <label  >
-          RELACION
-          <select className='text-black mb-1 mx-3 mt-3 rounded-lg'
-              onChange={(e) => onRelacionChange(e.target.value)} >
-              <option value=""></option>
-              {listaModelos.map((modelo) => (
-                  <option className="text-blue-600 hover:underline" value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
-              ))} 
-          </select>
-        </label>
-
-        <label>
-          TIPO RELACION
-            <select className='text-black mb-1 mx-3 mt-3 rounded-lg' 
-            onChange={(e) => onTipoRelacionChange(e.target.value)}>
-            <option value=""></option>
-            <option value="1-1">1-1</option>
-            <option value="1-n">1-n</option>
-            <option value="n-n">n-n</option>
-          </select>
-        </label> 
-      </div>
     </div>
   );
 };

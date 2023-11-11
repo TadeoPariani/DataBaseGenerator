@@ -34,7 +34,6 @@ const GestorCamposModelo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(JSON.stringify(listaModelos))
     router.push(`/modelos?lista=${encodeURIComponent(JSON.stringify(listaModelos))}`)
   };
 
@@ -114,6 +113,17 @@ const GestorCamposModelo = () => {
         </div>
 
         <div>
+          <label>
+            TIPO RELACION:
+              <select className='text-black mb-1 mx-3 mt-3 rounded-lg' 
+              onChange={(e) => setTipoRelacion(e.target.value)}>
+              <option value=""></option>
+              <option value="hasOne">hasOne</option>
+              <option value="belongsTo">belongsTo</option>
+              <option value="hasMany">hasMany</option>
+              <option value="belongsToMany">belongsToMany</option>
+            </select>
+          </label> 
           <label  >
             RELACIONAR CON:
             <select className='text-black mb-1 mx-3 mt-3 rounded-lg'
@@ -124,17 +134,6 @@ const GestorCamposModelo = () => {
                 ))} 
             </select>
           </label>
-
-          <label>
-            TIPO RELACION:
-              <select className='text-black mb-1 mx-3 mt-3 rounded-lg' 
-              onChange={(e) => setTipoRelacion(e.target.value)}>
-              <option value=""></option>
-              <option value="1-1">1-1</option>
-              <option value="1-n">1-n</option>
-              <option value="n-n">n-n</option>
-            </select>
-          </label> 
         </div>
 
         {camposModelo.map((campo, index) => ( 

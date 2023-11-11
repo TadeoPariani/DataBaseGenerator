@@ -43,7 +43,7 @@ export function crearModelo(lista) {
                 defaultValue: campo.defaultValue
             }
 
-            if (model.relacion ){
+            if (model.relacion){
                 listaModelos.forEach(modeloRelacionar => {
                     if (model.relacion === modeloRelacionar.nombreTabla) {
                         model.camposTabla.forEach(campo => {
@@ -70,10 +70,12 @@ export function crearModelo(lista) {
                             tipoRelacion: model.tipoRelacion,
                         }
                         console.log("ESTO ES EL MODELOS RELACIONADOS", modelosRelacionados)
+                        
                     }
+
                 })
                 listaModelosDefinidosParaRelacionar.push(modelosRelacionados)
-                console.log("ESTO ES LISTA DE MODELOS DEFINIDOS PARA RELACIONAR: ", listaModelosDefinidosParaRelacionar)
+                //console.log("ESTO ES LISTA DE MODELOS DEFINIDOS PARA RELACIONAR: ", typeof(listaModelosDefinidosParaRelacionar[1].modeloBase))
             }
 
         })
@@ -86,9 +88,38 @@ export function crearModelo(lista) {
     if (listaModelosDefinidosParaRelacionar.length > 0) {
         listaModelosDefinidosParaRelacionar.forEach( modelo => {
             switch (modelo.tipoRelacion) {
-                case "1-1":
+                case "hasOne":
                     modelo.modeloBase.hasOne(modelo.modeloParaRelacionar);
-
+                    sequelize.sync({ alter: true })
+                    .then((user) => {
+                        console.log('Modelo creado en la base de datos:', user);
+                    })
+                    .catch((error) => {
+                        console.error('Error al crear el modelo en la base de datos:', error);
+                    });
+                    break
+                case "hasMany":
+                    modelo.modeloBase.hasMany(modelo.modeloParaRelacionar);
+                    sequelize.sync({ alter: true })
+                    .then((user) => {
+                        console.log('Modelo creado en la base de datos:', user);
+                    })
+                    .catch((error) => {
+                        console.error('Error al crear el modelo en la base de datos:', error);
+                    });
+                    break;
+                case "belongsTo":
+                    modelo.modeloBase.belongsTo(modelo.modeloParaRelacionar);
+                    sequelize.sync({ alter: true })
+                    .then((user) => {
+                        console.log('Modelo creado en la base de datos:', user);
+                    })
+                    .catch((error) => {
+                        console.error('Error al crear el modelo en la base de datos:', error);
+                    });
+                    break;
+                case "belongsToMany":
+                    modelo.modeloBase.belongsToMany(modelo.modeloParaRelacionar, {through: `${modelo.modeloBase}_${modelo.modeloParaRelacionar}`}); //
                     sequelize.sync({ alter: true })
                     .then((user) => {
                         console.log('Modelo creado en la base de datos:', user);
