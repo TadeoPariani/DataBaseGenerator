@@ -7,7 +7,7 @@ export default function handler(req, res) {
     res.status(200).json({ message: 'Modelo creado exitosamente'});
     
   } else if (req.method === 'GET') {
-    //const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
+    const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
     if (resultado.code === 0) {
       console.log('El comando se ejecutó correctamente');
     } else {

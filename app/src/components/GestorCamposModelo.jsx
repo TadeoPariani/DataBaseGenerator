@@ -52,8 +52,6 @@ const GestorCamposModelo = () => {
         }]);
         setCampos([])
         setNombre("")
-        setRelacion("")
-        setTipoRelacion("")
       }})
   };
 
