@@ -1,12 +1,13 @@
 import React, { useState, Suspense } from 'react';
 import { useRouter } from 'next/router'
 
-// Dynamic HTML Streaming (DHS)
 const CrearCampo = React.lazy(() => import('../components/CrearCampo'));
 
 const GestorCamposModelo = () => {
   const router = useRouter()
   const [nombreModelo, setNombre] = useState("");
+  const [relacion, setRelacion] = useState("");
+  const [tipoRelacion, setTipoRelacion] = useState("");
   const [camposModelo, setCampos] = useState([]);
   const [listaModelos, setListaModelos] = useState([]);
 
@@ -20,8 +21,8 @@ const GestorCamposModelo = () => {
         defaultValue: '',
         lenght: null,
         index: false,
-        relacion: null,
-        tipoRelacion: null
+        // relacion: null,
+        // tipoRelacion: null
       }]);
   };
 
@@ -33,6 +34,7 @@ const GestorCamposModelo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert(JSON.stringify(listaModelos))
     router.push(`/modelos?lista=${encodeURIComponent(JSON.stringify(listaModelos))}`)
   };
 
@@ -42,9 +44,16 @@ const GestorCamposModelo = () => {
         alert('Revise los Campos');
       } else {
         const copiaCampos = JSON.parse(JSON.stringify(camposModelo));
-        setListaModelos([...listaModelos, {nombreTabla: nombreModelo, camposTabla: copiaCampos}]);
+        setListaModelos([...listaModelos, {
+          nombreTabla: nombreModelo, 
+          camposTabla: copiaCampos, 
+          relacion: relacion,
+          tipoRelacion: tipoRelacion
+        }]);
         setCampos([])
         setNombre("")
+        setRelacion("")
+        setTipoRelacion("")
       }})
   };
 
@@ -104,6 +113,30 @@ const GestorCamposModelo = () => {
               onChange={(e) => setNombre(e.target.value)}
             />
           </label>
+        </div>
+
+        <div>
+          <label  >
+            RELACIONAR CON:
+            <select className='text-black mb-1 mx-3 mt-3 rounded-lg'
+                onChange={(e) => setRelacion(e.target.value)} >
+                <option value=""></option>
+                {listaModelos.map((modelo) => (
+                    <option className="text-blue-600 hover:underline" value={modelo.nombreTabla}> {modelo.nombreTabla}</option>
+                ))} 
+            </select>
+          </label>
+
+          <label>
+            TIPO RELACION:
+              <select className='text-black mb-1 mx-3 mt-3 rounded-lg' 
+              onChange={(e) => setTipoRelacion(e.target.value)}>
+              <option value=""></option>
+              <option value="1-1">1-1</option>
+              <option value="1-n">1-n</option>
+              <option value="n-n">n-n</option>
+            </select>
+          </label> 
         </div>
 
         {camposModelo.map((campo, index) => ( 

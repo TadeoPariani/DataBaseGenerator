@@ -8,6 +8,8 @@ const TablaDetalle = (props) => {
                 if (modelo.nombreTabla === nombreTabla) {
                     return(
                         <div key={index} className='p-4 rounded shadow-md text-center'>
+                            <h2>Modelo Relacionado: {modelo.relacion}</h2>
+                            <h2>TipoRelacion: {modelo.tipoRelacion}</h2>
                             {modelo.camposTabla.map((campo, index) => 
                                 <div key={index} className="border p-4 my-4">
                                     <h3 className="text-xl font-bold mb-2">Nombre del campo: {campo.nombre}</h3>
@@ -17,8 +19,6 @@ const TablaDetalle = (props) => {
                                     <p className="mb-1">Default Value: {campo.defaultValue}</p>
                                     <p className="mb-1">Length: {campo.lenght}</p>
                                     <p className="mb-1">Indice: {campo.index.toString()}</p>
-                                    <p className="mb-1">Modelo Relacionado: {campo.relacion}</p>
-                                    <p className="mb-1">Tipo Relacion: {campo.tipoRelacion}</p>
                                     <hr className="my-2 border-t" />
                                 </div>
                             )}
