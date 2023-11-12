@@ -23,16 +23,25 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the proyect.
+## Generating Tables and Models
 
-You have to loggin using 'Todler' as username and '1234' as password
+Open http://localhost:3000 with your browser to see the project.
 
-Now you can create database models and theirs atributes using a simple Form
+You have to log in using 'Todler' as the username and '1234' as the password.
 
-Desarrollado por Tadeo Pariani, Joaquin Peralta Y Guillermo Schwartz
+You can create database models and their attributes using a simple form.
 
+You can also create relationships between the models while you create them.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To see the models you have created, press the "Ver Tablas" button.
+
+To generate the tables in the database and the model files, first press "Crear Tablas," and later press "Generar Modelos."
+
+This will create the tables in the database as well as create those model tables in the /models folder.
+
+Developed by Tadeo Pariani, Joaquin Peralta, and Guillermo Schwartz
+
+This project uses next/font to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
