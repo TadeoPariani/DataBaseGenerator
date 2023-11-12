@@ -9,15 +9,6 @@ function index() {
   const { lista } = router.query;
   let listaModelos = [];
 
-  function ejecutarComando() {
-    const resultado = shell.exec('npx sequelize-auto -o "./models" -d database.sqlite -h localhost -u root -p 3306 -x \'\' -e sqlite');
-    if (resultado.code === 0) {
-    console.log('El comando se ejecutó correctamente');
-    } else {
-    console.error('Error al ejecutar el comando', resultado.stderr);
-    }
-  }
-
   try{
     listaModelos = JSON.parse(decodeURIComponent(lista));
   } catch (e){
