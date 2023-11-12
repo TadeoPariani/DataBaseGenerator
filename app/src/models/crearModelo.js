@@ -75,7 +75,6 @@ export function crearModelo(lista) {
 
                 })
                 listaModelosDefinidosParaRelacionar.push(modelosRelacionados)
-                //console.log("ESTO ES LISTA DE MODELOS DEFINIDOS PARA RELACIONAR: ", typeof(listaModelosDefinidosParaRelacionar[1].modeloBase))
             }
 
         })
@@ -89,6 +88,7 @@ export function crearModelo(lista) {
         listaModelosDefinidosParaRelacionar.forEach( modelo => {
             switch (modelo.tipoRelacion) {
                 case "hasOne":
+                    console.log('----------------------------------------------------------------');
                     modelo.modeloBase.hasOne(modelo.modeloParaRelacionar);
                     sequelize.sync({ alter: true })
                     .then((user) => {
