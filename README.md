@@ -39,6 +39,8 @@ To generate the tables in the database and the model files, first press "Crear T
 
 This will create the tables in the database as well as create those model tables in the /models folder.
 
+## Integrantes
+
 Developed by Tadeo Pariani, Joaquin Peralta, and Guillermo Schwartz
 
 This project uses next/font to automatically optimize and load Inter, a custom Google Font.
